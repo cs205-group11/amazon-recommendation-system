@@ -1,5 +1,3 @@
-# Header 0
-
 Text can be **bold**, _italic_, or ~~strikethrough~~.
 
 [Link to another page](./another-page.html).
@@ -8,17 +6,23 @@ There should be whitespace between paragraphs.
 
 There should be whitespace between paragraphs. We recommend including a README, or a file with information about your project.
 
-# Header 1
+# Introduction
 
-This is a normal paragraph following a header. GitHub is a code hosting platform for version control and collaboration. It lets you and others work together on projects from anywhere.
+Introduction here
 
-## Header 2
+## Problem Description
 
-> This is a blockquote following a header.
->
-> When something is important enough, you do it even if the odds are not in your favor.
+Problem description here
 
-### Header 3
+## Need for Big Data and Big Compute
+
+Describe the need for big data and big compute here
+
+## Existing Solutions to the Problem
+
+Describe existing solutions here
+
+Code example below:
 
 ```js
 // Javascript code with syntax highlighting.
@@ -35,19 +39,49 @@ GitHubPages::Dependencies.gems.each do |gem, version|
 end
 ```
 
-#### Header 4
+## Challenges
+
+Describe challenges here
+
+> This is a blockquote following a header.
+>
+> When something is important enough, you do it even if the odds are not in your favor.
+
+# Methodology and Design
+
+## Data Source
+
+Describe the data source here
 
 *   This is an unordered list following a header.
 *   This is an unordered list following a header.
 *   This is an unordered list following a header.
 
-##### Header 5
+## Code Profiling
+
+Code profiling goes here
+
+## Model Description and Programming Model
+
+Model description here and example image below:
+
+![Branching](https://guides.github.com/activities/hello-world/branching.png)
+
+## Parallel application
+
+Description of parallel application
+
+## Platform and Infrastructure
+
+Description of the platform and infrastructure
+
+*   This is an unordered list following a header.
+*   This is an unordered list following a header.
+*   This is an unordered list following a header.
 
 1.  This is an ordered list following a header.
 2.  This is an ordered list following a header.
 3.  This is an ordered list following a header.
-
-###### Header 6
 
 | head1        | head two          | three |
 |:-------------|:------------------|:------|
@@ -90,14 +124,27 @@ end
   - level 2 item
 - level 1 item
 
-### Small image
+# Usage Instructions
 
-![Octocat](https://assets-cdn.github.com/images/icons/emoji/octocat.png)
+## Software Design
 
-### Large image
+Discuss Software design here
 
-![Branching](https://guides.github.com/activities/hello-world/branching.png)
+```
+Long, single-line code blocks should not wrap. They should horizontally scroll if they are too long. This line should be long enough to demonstrate this.
+```
 
+```
+The final element.
+```
+
+## How to Use our Code
+
+How to use
+
+## How to Run Tests
+
+How to run tests
 
 ### Definition lists can be used with HTML syntax.
 
@@ -112,10 +159,40 @@ end
 <dd>Green</dd>
 </dl>
 
-```
-Long, single-line code blocks should not wrap. They should horizontally scroll if they are too long. This line should be long enough to demonstrate this.
-```
+# Results
 
-```
-The final element.
-```
+## Performance Evaluation
+
+Speed-up, throughput, weak and strong scaling
+
+## Optimizations and Overheads
+
+Discussion about overheads and optimizations done
+
+# Advanced Features
+
+Discussion about advanced features here
+
+# Discussion
+
+Discuss
+
+## Goals Achieved
+
+Goals Achieved here
+
+## Improvements Suggested
+
+Improvements suggested here
+
+## Interesting Insights
+
+Interesting insights here
+
+## Lessons Learnt
+
+Lessons learnt here
+
+## Future Work
+
+Future work here
