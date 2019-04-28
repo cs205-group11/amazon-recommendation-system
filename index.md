@@ -47,6 +47,8 @@ Describe challenges here
 >
 > When something is important enough, you do it even if the odds are not in your favor.
 
+* * *
+
 # Methodology and Design
 
 ## Data Source
@@ -90,10 +92,6 @@ Description of the platform and infrastructure
 | ok           | good `oreos`      | hmm   |
 | ok           | good `zoute` drop | yumm  |
 
-### There's a horizontal rule below this.
-
-* * *
-
 ### Here is an unordered list:
 
 *   Item foo
@@ -123,6 +121,8 @@ Description of the platform and infrastructure
   - level 2 item
   - level 2 item
 - level 1 item
+
+* * *
 
 # Usage Instructions
 
@@ -159,6 +159,8 @@ How to run tests
 <dd>Green</dd>
 </dl>
 
+* * *
+
 # Results
 
 ## Performance Evaluation
@@ -169,9 +171,13 @@ Speed-up, throughput, weak and strong scaling
 
 Discussion about overheads and optimizations done
 
+* * *
+
 # Advanced Features
 
 Discussion about advanced features here
+
+* * *
 
 # Discussion
 
@@ -196,6 +202,8 @@ Lessons learnt here
 ## Future Work
 
 Future work here
+
+* * *
 
 # References
 
