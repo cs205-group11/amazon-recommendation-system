@@ -63,7 +63,7 @@ The raw dataset that we use for this project is the "Amazon Product Data" that w
 }
 ```
 
-As shown above, each product contains a range of attributes. The most interesting attributes for our application is `reviewerID`,`asin` and `overall`, and they have the following meanings:
+As shown above, each product contains a range of attributes. The most interesting attributes for our application are `reviewerID`,`asin` and `overall`, and they have the following meanings:
 * `reviewerID`: a unique string consisting of letters and numbers representing each individual reviewer.
 * `asin`: a unique ID for the product.
 * `overall`: the rating given by reviewer `reviewerID` to product `asin`, ranging from 1 to 5. 
