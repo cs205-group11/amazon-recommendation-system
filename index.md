@@ -40,14 +40,6 @@ Amazon's dataset is not, unfortunately, neatly organized into a matrix of users 
 
 In order to compute similarity scores and generate predictions, we rely on a lot of matrix or vector products. These matrix operations can be made parallel through **big compute** and we use multi-threading to speed up these computations. Overall, the goal of our project is to increase the speedup of the whole process of generating recommendations, which includes pre-processing the raw dataset as well as computing predictions using the utility matrix, using a hybrid approach involving big-data processing and big-compute.
 
-## Challenges
-
-Describe challenges here
-
-> This is a blockquote following a header.
->
-> When something is important enough, you do it even if the odds are not in your favor.
-
 * * *
 
 # Methodology and Design
