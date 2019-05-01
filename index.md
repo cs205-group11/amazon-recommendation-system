@@ -77,7 +77,7 @@ As shown above, each product contains a range of attributes. The most interestin
 
 In our project, we use two typical recommendation system models to perform benchmarking, based on the programming model mentioned in the next section. These two recommendation system models are:
 * Standard Collaborative Filtering Model (SCF)
-* Matrix Factorization using Alternative Least Square (ALS)
+* Matrix Factorization (MF) optimized through Alternative Least Square (ALS)
 
 ### Model Setup
 To begin with, we can assume that we have a *n* × *m* matrix, where *n* represents the number of user and *m* represents the number of products. Each entry in this matrix *r<sub>ij</sub>* is the rating given by user *i* to product *j*.
@@ -94,8 +94,12 @@ However, this model suffers from following **limitations**:
 * It is not computationally efficient
 * It does not handle sparsity well (i.e. It does not have accurate predictions if there are not enough reviews for a product)
 
-### Matrix Factorization using Alternative Least Square (ALS)
-In light of above two limitations of SCF, Matrix Factorization is a more advanced model that decomposes the original sparse matrix to lower-dimensional matrices incorporating latent vectors and are less sparse. The high level idea behind  
+### Matrix Factorization (MF) optimized through Alternative Least Square (ALS)
+In light of above two limitations of SCF, matrix factorization is a more advanced model that decomposes the original sparse matrix to lower-dimensional matrices incorporating latent vectors. These latent vectors may include higher-level attributes which are not captured by ratings for individual products. 
+
+To factorize a matrix, single value decomposition is a common technique, where a matrix *R* can be decomposed of matrices *U, Σ, V*, where *Σ* is a matrix containing singular values of the original matrix. However, given that R is a sparse matrix, we can find matrices *U* and *V* directly, with the goal that the product of *U* and *V* is an approximation of the original matrix *R*. 
+
+Therefore, this problem is turned into an optimization problem to find *U* and *V*, whose product is a good approximation of *R*. One way to numerically compute this is Alternative Least Square (ALS) [3], where either the user factor matrix or item factor matrix is held constant in turn, and update the other matrix. This approach yields a higher accuracy as seen from Performance Evaluation section.  
 
 ## Code Profiling
 
