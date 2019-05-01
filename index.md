@@ -80,11 +80,11 @@ In our project, we use two typical recommendation system models to perform bench
 * Matrix Factorization using Alternative Least Square (ALS)
 
 ### Model Setup
-To begin with, we can assume that we have a *n* × *m* matrix, where $n$ represents the number of user and *m* represents the number of products. Each entry in this matrix *r<sub>ij</sub>* is the rating given by user *i* to product *j*.
+To begin with, we can assume that we have a *n* × *m* matrix, where *n* represents the number of user and *m* represents the number of products. Each entry in this matrix *r<sub>ij</sub>* is the rating given by user *i* to product *j*.
 The overall goal, is to predict a rating that has not yet been given from user *i* to product *j* (i.e. calculate the predicted rating *r<sub>ij</sub>*).
 
 ### Standard Collaborative Filtering Model (SCF)
-In SCF, we predict the rating based on the nearest neighborhood algorithm (kNN). More specifically, we can calculate the **cosine similarity** between the current user $i$ to all other users, and select top *k* users based on the similarity score. From these *k* users, we can calculate the weighted avaerage of ratings for product *j* with the cosine similarity as weights. This averaged rating is used as *r<sub>ij</sub>*.
+In SCF, we predict the rating based on the nearest neighborhood algorithm (kNN). More specifically, we can calculate the **cosine similarity** between the current user *i* to all other users, and select top *k* users based on the similarity score. From these *k* users, we can calculate the weighted avaerage of ratings for product *j* with the cosine similarity as weights. This averaged rating is used as *r<sub>ij</sub>*.
 
 The **advantage** of this model is as follows:
 * Easy to understand
