@@ -20,9 +20,9 @@ There are two broad approaches to generate recommendations:
 
 * Collaborative filtering systems: these systems aim to assess the users purchasing items. Specifically, they provide a metric to compare how similar two users are and then recommend products that users that are similar to the target user rated highly. Our project will follow this approach and we analyze a few different methods and algorithms in the broad domain of collaborative filtering, including Standard Collaborative Filtering Model (SCF) and Matrix Factorization (MF) optimized through Alternative Least Square (ALS). 
 
-## Need for Big Data and Big Compute
+### Collaborative Filtering
 
-In order to perform collaborative filtering, one needs to create a **utility matrix** [1]. This rows of this utility matrix correspond to users, and the columns correspond to products. Each entry in the matrix is the rating (1-5, both inclusive) given to a product by a user. For example, let us say we have 6 products: P1 through P6, and 5 users: U1 through U5. The corresponding utility matrix looks as follows: 
+In order to perform collaborative filtering, one needs to create a **utility matrix** [[1](http://infolab.stanford.edu/~ullman/mmds/ch9.pdf)]. This rows of this utility matrix correspond to users, and the columns correspond to products. Each entry in the matrix is the rating (1-5, both inclusive) given to a product by a user. For example, let us say we have 6 products: P1 through P6, and 5 users: U1 through U5. Since all users do not rate all products, the utility matrix ends up being quite sparse. The corresponding utility matrix looks as follows: 
 
 |    | P1 | P2 | P3 | P4 | P5 | P6 |
 |:---|:---|:---|:---|:---|:---|:---|
@@ -31,6 +31,10 @@ In order to perform collaborative filtering, one needs to create a **utility mat
 | U3 |    |    |  4 |    |    |  3 |
 | U4 |    |  5 |  2 |    |  5 |    |
 | U5 |  3 |    |    |  5 |    |  4 |
+
+Now, in order to recommend products to a new user, U6, we must first find users in our dataset who are similar to U6. In order to do this, we use a metric called **[cosine similarity](https://en.wikipedia.org/wiki/Cosine_similarity)**, where U6 is treated like a vector and compared with other users in the dataset, also treated as vectors. We essentially use the [dot product](https://en.wikipedia.org/wiki/Dot_product) between two vectors to compute the angle between them. The smaller the angle, the closer the two vectors are to each other and the more similar the users. We then recommend U6 products that these similar users have rated highly.
+
+## Need for Big Data and Big Compute
 
 Describe the need for big data and big compute here
 
