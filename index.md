@@ -80,22 +80,22 @@ In our project, we use two typical recommendation system models to perform bench
 * Matrix Factorization (MF) optimized through Alternative Least Square (ALS)
 
 ### Model Setup
-To begin with, we can assume that we have a *n* × *m* matrix, where *n* represents the number of user and *m* represents the number of products. Each entry in this matrix *r<sub>ij</sub>* is the rating given by user *i* to product *j*.
+To begin with, we can assume that we have a *n* × *m* matrix, where *n* represents the number of users and *m* represents the number of products. Each entry in this matrix *r<sub>ij</sub>* is the rating given by user *i* to product *j*.
 The overall goal, is to predict a rating that has not yet been given from user *i* to product *j* (i.e. calculate the predicted rating *r<sub>ij</sub>*).
 
 ### Standard Collaborative Filtering Model (SCF)
-In SCF, we predict the rating based on the nearest neighborhood algorithm (kNN). More specifically, we can calculate the **cosine similarity** between the current user *i* to all other users, and select top *k* users based on the similarity score. From these *k* users, we can calculate the weighted avaerage of ratings for product *j* with the cosine similarity as weights. This averaged rating is used as *r<sub>ij</sub>*.
+In SCF, we predict the rating based on the nearest neighborhood algorithm (kNN). More specifically, we can calculate the **cosine similarity** between the current user *i* to all other users, and select top *k* users based on the similarity score. From these *k* users, we can calculate the weighted average of ratings for product *j* with the cosine similarity as weights. This averaged rating is used as *r<sub>ij</sub>*.
 
 The **advantage** of this model is as follows:
 * Easy to understand
 * Easy to implement
 
-However, this model suffers from following **limitations**:
+However, this model suffers from the following **limitations**:
 * It is not computationally efficient
 * It does not handle sparsity well (i.e. It does not have accurate predictions if there are not enough reviews for a product)
 
 ### Matrix Factorization (MF) optimized through Alternative Least Square (ALS)
-In light of above two limitations of SCF, matrix factorization is a more advanced model that decomposes the original sparse matrix to lower-dimensional matrices incorporating latent vectors. These latent vectors may include higher-level attributes which are not captured by ratings for individual products. 
+In light of the above two limitations of SCF, matrix factorization is a more advanced model that decomposes the original sparse matrix to lower-dimensional matrices incorporating latent vectors. These latent vectors may include higher-level attributes which are not captured by ratings for individual products. 
 
 To factorize a matrix, single value decomposition is a common technique, where a matrix *R* can be decomposed of matrices *U, Σ, V*, where *Σ* is a matrix containing singular values of the original matrix. However, given that R is a sparse matrix, we can find matrices *U* and *V* directly, with the goal that the product of *U* and *V* is an approximation of the original matrix *R*. 
 
