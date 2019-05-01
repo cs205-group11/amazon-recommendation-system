@@ -73,7 +73,7 @@ As shown above, each product contains a range of attributes. The most interestin
 * `asin`: a unique ID for the product.
 * `overall`: the rating given by reviewer `reviewerID` to product `asin`, ranging from 1 to 5. 
 
-## Model
+## Recommendation System Model
 
 In our project, we use two typical recommendation system models to perform benchmarking, based on the programming model mentioned in the next section. These two recommendation system models are:
 * Standard Collaborative Filtering Model (SCF)
