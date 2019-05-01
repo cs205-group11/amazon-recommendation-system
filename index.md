@@ -2,42 +2,37 @@ Text can be **bold**, _italic_, or ~~strikethrough~~.
 
 [Link to another page](./another-page.html).
 
-There should be whitespace between paragraphs.
-
-There should be whitespace between paragraphs. We recommend including a README, or a file with information about your project.
+There should be whitespace between paragraphs. 
 
 # Introduction
 
-Introduction here
+The goal of this project is to parallelize the process of generating product recommendations to Amazon's users. Specifically, we aim to predict, as accurately as possible, the rating a user gives to a particular product. If we are able to make accurate predictions, we can recommend products to users that they have not bought yet. 
 
 ## Problem Description
 
-Problem description here
-
-## Need for Big Data and Big Compute
-
-Describe the need for big data and big compute here
+[Amazon](https://www.amazon.com/), the world's largest e-commerce marketplace, relies on targeted recommendations in order to sell a broad range of products to its users. These recommendations should be based on a user's previous purchase history as well as products that similar users have purchased. Therefore, computing how similar two users are is an essential part of the recommendation process. Good recommendations benefit both customers, who receive products that are better suited to their needs and are able to save shopping time, as well as Amazon itself, as they are able to sell a greater number of products, successfully market new products, and obtain customer loyalty as buying more products increases the quality of recommended products.  
 
 ## Existing Solutions to the Problem
 
-Describe existing solutions here
+There are two broad approaches to generate recommendations: 
 
-Code example below:
+* Content-based systems: these systems aim to assess the features of the products being bought. They aim to classify products into different clusters or categories and then recommend other products within this cluster or category. Some examples of this technique include recommending athletic wear to customers who have bought sports equipment or recommending horror movies to customers who have watched other horror movies. 
 
-```js
-// Javascript code with syntax highlighting.
-var fun = function lang(l) {
-  dateformat.i18n = require('./lang/' + l)
-  return true;
-}
-```
+* Collaborative filtering systems: these systems aim to assess the users purchasing items. Specifically, they provide a metric to compare how similar two users are and then recommend products that users that are similar to the target user rated highly. Our project will follow this approach and we analyze a few different methods and algorithms in the broad domain of collaborative filtering, including Standard Collaborative Filtering Model (SCF) and Matrix Factorization (MF) optimized through Alternative Least Square (ALS). 
 
-```ruby
-# Ruby code with syntax highlighting
-GitHubPages::Dependencies.gems.each do |gem, version|
-  s.add_dependency(gem, "= #{version}")
-end
-```
+## Need for Big Data and Big Compute
+
+In order to perform collaborative filtering, one needs to create a **utility matrix** [1]. This rows of this utility matrix correspond to users, and the columns correspond to products. Each entry in the matrix is the rating (1-5, both inclusive) given to a product by a user. For example, let us say we have 6 products: P1 through P6, and 5 users: U1 through U5. The corresponding utility matrix looks as follows: 
+
+|    | P1 | P2 | P3 | P4 | P5 | P6 |
+|:---|:---|:---|:---|:---|:---|:---|
+| U1 |  3 |    |  4 |  5 |    |    |
+| U2 |  1 |    |    |    |  5 |    |
+| U3 |    |    |  4 |    |    |  3 |
+| U4 |    |  5 |  2 |    |  5 |    |
+| U5 |  3 |    |    |  5 |    |  4 |
+
+Describe the need for big data and big compute here
 
 ## Challenges
 
@@ -53,7 +48,7 @@ Describe challenges here
 
 ## Data
 
-The raw dataset that we use for this project is the "Amazon Product Data" that was collected by Julian McAuley et al. from University of California, San Diego (UCSD) [1]. We came across this dataset because it was used extensively in machine learning applications such as [2].  This dataset contains 142.8 million product reviews, as well as the associated metadata from Amazon spannning May 1996 to July 2014. A sample review of this dataset is as follows:
+The raw dataset that we use for this project is the "Amazon Product Data" that was collected by Julian McAuley et al. from University of California, San Diego (UCSD) [2]. We came across this dataset because it was used extensively in machine learning applications such as [3].  This dataset contains 142.8 million product reviews, as well as the associated metadata from Amazon spannning May 1996 to July 2014. A sample review of this dataset is as follows:
 ```
 {
   "reviewerID": "A2SUAM1J3GNN3B",
@@ -104,6 +99,23 @@ Therefore, this problem is turned into an optimization problem to find *U* and *
 ## Code Profiling
 
 Code profiling goes here
+
+Code example below:
+
+```js
+// Javascript code with syntax highlighting.
+var fun = function lang(l) {
+  dateformat.i18n = require('./lang/' + l)
+  return true;
+}
+```
+
+```ruby
+# Ruby code with syntax highlighting
+GitHubPages::Dependencies.gems.each do |gem, version|
+  s.add_dependency(gem, "= #{version}")
+end
+```
 
 ## Model Description and Programming Model
 
