@@ -196,21 +196,44 @@ The final element.
 
 2. log in to the AWS EMR cluster
 
-3. wget http://snap.stanford.edu/data/amazon/productGraph/aggressive_dedup.json.gz
+3. Download the rating data http://jmcauley.ucsd.edu/data/amazon/links.html
+```
+wget http://snap.stanford.edu/data/amazon/productGraph/aggressive_dedup.json.gz
+```
+4. Unzip the rating data.
+```
+tar xvzf aggressive_dedup.json.gz
+```
 
-4. tar xvzf aggressive_dedup.json.gz
+5. Put the rating data into the hadoop file system.
+```
+hadoop fs -put aggressive_dedup.json
+```
 
-5. hadoop fs -put aggressive_dedup.json
+6. Delete the original copy.
+```
+rm -r aggressive_dedup.json 
+```
 
-6. rm -r aggressive_dedup.json (we have a copy already in hdfs)
+7. Pull the git repository containing the code.
+```
+git clone https://github.com/JinZhaoHong/cs205_amazon_recommendation.git 
+```
 
-7. git clone https://github.com/JinZhaoHong/cs205_amazon_recommendation.git 
+8. Run the code.
+```
+spark-submit --num-executors 8 --executor-cores 32  als_recommendation.py aggressive_dedup.json
+```
 
-8. spark-submit --num-executors 8 --executor-cores 32  als_recommendation.py aggressive_dedup.json
+9. You should see some newly generated folder in the hdfs.
+```
+hadoop fs -ls
+```
+To increase executor memory, add the flag
+``` 
+--driver-memory 2g --executor-memory 2g
+```
 
-9. hadoop fs -ls
-
-10. You should see some newly generated folder. To increase executor memory, add the flag --driver-memory 2g --executor-memory 2g
 
 
 ## How to Run Tests
