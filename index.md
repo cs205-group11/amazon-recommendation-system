@@ -46,7 +46,7 @@ In order to compute similarity scores and generate predictions, we rely on a lot
 
 ## Data
 
-The raw dataset that we use for this project is the "Amazon Product Data" that was collected by Julian McAuley et al. from University of California, San Diego (UCSD) [2]. We came across this dataset because it was used extensively in machine learning applications such as [3].  This dataset contains 142.8 million product reviews, as well as the associated metadata from Amazon spannning May 1996 to July 2014. A sample review of this dataset is as follows:
+The raw dataset that we use for this project is the "Amazon Product Data" that was collected by Julian McAuley et al. from University of California, San Diego (UCSD) [1]. We came across this dataset because it was used extensively in machine learning applications such as [2]. This dataset contains 142.8 million product reviews, as well as the associated metadata from Amazon spannning May 1996 to July 2014. Therefore, the size of this dataset is considerable (over 100 GB), and it is not practical to fit all the data on a single machine and to make useful recommendations. A sample review of this dataset is as follows:
 ```
 {
   "reviewerID": "A2SUAM1J3GNN3B",
@@ -61,38 +61,96 @@ The raw dataset that we use for this project is the "Amazon Product Data" that w
 }
 ```
 
-As shown above, each product contains a range of attributes. The most interesting attributes for our application are `reviewerID`,`asin` and `overall`, and they have the following meanings:
+As shown above, each product contains a range of attributes. The most interesting attributes for our application is `reviewerID`,`asin` and `overall`, and they have the following meanings:
 * `reviewerID`: a unique string consisting of letters and numbers representing each individual reviewer.
 * `asin`: a unique ID for the product.
 * `overall`: the rating given by reviewer `reviewerID` to product `asin`, ranging from 1 to 5. 
 
-## Recommendation System Model
+## Recommandation System Model
 
-In our project, we use two typical recommendation system models to perform benchmarking, powered by the underlying programming model introduced in the next section. These two recommendation system models are:
+In our project, we use two typical recommendation system models to perform benchmarking, based on the programming model mentioned in the next section. These two recommendation system models are:
 * Standard Collaborative Filtering Model (SCF)
 * Matrix Factorization (MF) optimized through Alternative Least Square (ALS)
 
 ### Model Setup
-To begin with, we can assume that we have a *n* × *m* matrix, where *n* represents the number of users and *m* represents the number of products. Each entry in this matrix *r<sub>ij</sub>* is the rating given by user *i* to product *j*.
+To begin with, we can assume that we have a *n* × *m* matrix, where *n* represents the number of user and *m* represents the number of products (i.e. the utility matrix shown above). Each entry in this matrix *r<sub>ij</sub>* is the rating given by user *i* to product *j*.
 The overall goal, is to predict a rating that has not yet been given from user *i* to product *j* (i.e. calculate the predicted rating *r<sub>ij</sub>*).
 
 ### Standard Collaborative Filtering Model (SCF)
-In SCF, we predict the rating based on the nearest neighborhood algorithm (kNN). More specifically, we can calculate the **cosine similarity** between the current user *i* to all other users, and select top *k* users based on the similarity score. From these *k* users, we can calculate the weighted average of ratings for product *j* with the cosine similarity as weights. This averaged rating is used as *r<sub>ij</sub>*.
+In SCF, we predict the rating based on the nearest neighborhood algorithm (kNN). More specifically, we can calculate the **cosine similarity** between the current user *i* to all other users, and select top *k* users based on the similarity score. From these *k* users, we can calculate the weighted avaerage of ratings for product *j* with the cosine similarity as weights. This averaged rating is used as *r<sub>ij</sub>*.
 
 The **advantage** of this model is as follows:
 * Easy to understand
 * Easy to implement
 
-However, this model suffers from the following **limitations**:
+However, this model suffers from following **limitations**:
 * It is not computationally efficient
 * It does not handle sparsity well (i.e. It does not have accurate predictions if there are not enough reviews for a product)
 
 ### Matrix Factorization (MF) optimized through Alternative Least Square (ALS)
-In light of the above two limitations of SCF, matrix factorization is a more advanced model that decomposes the original sparse matrix to lower-dimensional matrices incorporating latent vectors. These latent vectors may include higher-level attributes which are not captured by ratings for individual products. 
+In light of above two limitations of SCF, matrix factorization is a more advanced model that decomposes the original sparse matrix to lower-dimensional matrices incorporating latent vectors. These latent vectors may include higher-level attributes which are not captured by ratings for individual products. 
 
-To factorize a matrix, single value decomposition is a common technique, where a matrix *R* can be decomposed of matrices *U, Σ, V*, where *Σ* is a matrix containing singular values of the original matrix. However, given that R is a sparse matrix, we can find matrices *U* and *V* directly, with the goal that the product of *U* and *V* is an approximation of the original matrix *R*. 
+To factorize a matrix, single value decomposition is a common technique, where a matrix *R* can be decomposed of matrices *X, Σ, Y*, where *Σ* is a matrix containing singular values of the original matrix. However, given that R is a sparse matrix, we can find matrices *X* and *Y* directly, with the goal that the product of *X* and *Y* is an approximation of the original matrix *R*. 
 
-Therefore, this problem is turned into an optimization problem to find *U* and *V*, whose product is a good approximation of *R*. One way to numerically compute this is Alternative Least Square (ALS) [3], where either the user factor matrix or item factor matrix is held constant in turn, and update the other matrix. This approach yields a higher accuracy as seen from Performance Evaluation section.  
+Therefore, this problem is turned into an optimization problem to find *X* and *Y*, whose product is a good approximation of *R*. One way to numerically compute this is Alternative Least Square (ALS) [3], where either the user factor matrix or item factor matrix is held constant in turn, and update the other matrix. This approach yields a higher accuracy as seen from Performance Evaluation section.
+
+## Parallel Application and Programming Model
+
+The parallelism of our application lies in the following aspects:
+* Data Preprocessing
+* Rating Prediction
+
+### Data Preprocessing
+As shown in the Data section above, the raw dataset is in the form of `JSON`, and it contains a range of irrelevant data such as `reviewText`, `summary` and `reviewTime`. In order to extract interesting attributes (`reviewerID`, `asin` and `overall`) from over 100 GB of data, a well-designed data preprocessing pipeline needs to be implemented. 
+Below, we have shown this pipeline powered by Spark, a distributed cluster-computing framework used extensively in industry.
+
+![alt text](./fig/datapreprocessing_spark.png)
+
+The input of this data pipeline is the raw json file containing all the relevant metadata for a given product. The output of this data pipeline is the utility matrix mentioned above. 
+
+### Rating Prediction
+As introduced above, we will use different types of collaborative filtering systems for rating prediction. 
+
+For SCF, the cosine similarity is calculated as:
+
+![alt text](./fig/cos_similarity.png)
+
+And the prediction is given by:
+
+![alt text](./fig/prediction.png)
+
+Here,
+
+* P<sub>u,i</sub> is the predicted rating from user u to item i
+* R<sub>v,i</sub> is the rating given by a user v to a movie i
+* S<sub>u,v</sub> is the cosine similarity between the user u and v
+
+For ALS, we are using the following algorithm[5] to iteratively find latent matrix X and Y:
+
+![alt text](./fig/als.png)
+
+where X and Y are the latent matrices consisting of summarization of each individual user and item in *k* dimension, assuming overall we have *n* users and *m* items. They have the following form:
+
+![alt text](./fig/XandY.png)
+
+Once we obtain X and Y from ALS, we can either use R = X<sub>T</sub>Y or a neural network (advanced feature) to calculate prediction.
+
+In order to increase the performance, all models are running on a multi-node cluster, which is further optimized by increasing the number of threads on each node through OpenMP. To take advantage of this multi-node cluster, we have used the distributed ALS algorithm as follows:
+
+![alt text](./fig/distALS.png)
+
+
+
+### Overall Programming Model Flowchart
+To summarize, the overall programming model is as follows:
+![alt text](./fig/datapreprocessing_spark.png)
+
+
+## Platform and Infrastructure
+
+The tools and infrastructures are as follows:
+![alt text](./fig/infra.png)
+
 
 ## Code Profiling
 
