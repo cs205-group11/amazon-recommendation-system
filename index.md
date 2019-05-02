@@ -78,6 +78,14 @@ In addition, we have another advanced recommendation system based on Neural Netw
 To begin with, we can assume that we have a *n* × *m* matrix, where *n* represents the number of user and *m* represents the number of products (i.e. the utility matrix shown above). Each entry in this matrix *r<sub>ij</sub>* is the rating given by user *i* to product *j*.
 The overall goal, is to predict a rating that has not yet been given from user *i* to product *j* (i.e. calculate the predicted rating *r<sub>ij</sub>*).
 
+|    | P1 | P2 | P3 | P4 | P5 | P6 |
+|:---|:---|:---|:---|:---|:---|:---|
+| U1 |  3 |  ? |  4 |  5 |  ? |  ? |
+| U2 |  1 |  ? |  ? |  ? |  5 |  ? |
+| U3 |  ? |  ? |  4 |  ? |  ? |  3 |
+| U4 |  ? |  5 |  2 |  ? |  5 |  ? |
+| U5 |  3 |  ? |  ? |  5 |  ? |  4 |
+
 ### Standard Collaborative Filtering Model (SCF)
 In SCF, we predict the rating based on the nearest neighborhood algorithm (kNN). More specifically, we can calculate the **cosine similarity** between the current user *i* to all other users, and select top *k* users based on the similarity score. From these *k* users, we can calculate the weighted avaerage of ratings for product *j* with the cosine similarity as weights. This averaged rating is used as *r<sub>ij</sub>*.
 
