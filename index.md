@@ -137,7 +137,9 @@ Here,
 * R<sub>v,i</sub> is the rating given by a user v to a movie i
 * S<sub>u,v</sub> is the cosine similarity between the user u and v
 
-For ALS, we are using the following algorithm[5] to iteratively find latent matrix X and Y:
+**Parallelism**: Since calculating the cosine similarity between every pair of user is independent, we can therefore use OpenMP to parallelize the algorithm. Further, we have distributed the workload across different nodes using Spark to increase model performance.
+
+For ALS, we are using the following algorithm [5] to iteratively find latent matrix X and Y:
 
 ![alt text](./fig/als.png)
 
@@ -147,7 +149,7 @@ where X and Y are the latent matrices consisting of summarization of each indivi
 
 Once we obtain X and Y from ALS, we can either use R = X<sup>T</sup>Y or a neural network (advanced feature) to calculate prediction.
 
-In order to increase the performance, all models are running on a multi-node cluster, which is further optimized by increasing the number of threads on each node through OpenMP. To take advantage of this multi-node cluster, we have used the distributed ALS algorithm as follows:
+**Parallelism**: In order to increase the performance, all models are running on a multi-node cluster, which is further optimized by increasing the number of threads on each node through OpenMP. To take advantage of this multi-node cluster, we have used the distributed ALS algorithm as follows:
 
 ![alt text](./fig/distALS.png)
 
