@@ -151,28 +151,6 @@ To summarize, the overall programming model is as follows:
 The tools and infrastructures are as follows:
 ![alt text](./fig/infra.png)
 
-
-## Code Profiling
-
-Code profiling goes here
-
-Code example below:
-
-```js
-// Javascript code with syntax highlighting.
-var fun = function lang(l) {
-  dateformat.i18n = require('./lang/' + l)
-  return true;
-}
-```
-
-```ruby
-# Ruby code with syntax highlighting
-GitHubPages::Dependencies.gems.each do |gem, version|
-  s.add_dependency(gem, "= #{version}")
-end
-```
-
 ## Model Description and Programming Model
 
 Model description here and example image below:
