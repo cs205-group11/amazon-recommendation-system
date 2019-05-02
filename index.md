@@ -98,11 +98,13 @@ However, this model suffers from following **limitations**:
 * It does not handle sparsity well (i.e. It does not have accurate predictions if there are not enough reviews for a product)
 
 ### Matrix Factorization (MF) optimized through Alternative Least Square (ALS)
-In light of above two limitations of SCF, matrix factorization is a more advanced model that decomposes the original sparse matrix to lower-dimensional matrices incorporating latent vectors. These latent vectors may include higher-level attributes which are not captured by ratings for individual products. 
+In light of above two limitations of SCF, matrix factorization is a more advanced technique that decomposes the original sparse matrix to lower-dimensional matrices incorporating latent vectors. These latent vectors may include higher-level attributes which are not captured by ratings for individual products. 
+
+![alt text](./fig/matrix_decomposition.png)
 
 To factorize a matrix, single value decomposition is a common technique, where a matrix *R* can be decomposed of matrices *X, Σ, Y*, where *Σ* is a matrix containing singular values of the original matrix. However, given that R is a sparse matrix, we can find matrices *X* and *Y* directly, with the goal that the product of *X* and *Y* is an approximation of the original matrix *R*. 
 
-Therefore, this problem is turned into an optimization problem to find *X* and *Y*, whose product is a good approximation of *R*. One way to numerically compute this is Alternative Least Square (ALS) [3], where either the user factor matrix or item factor matrix is held constant in turn, and update the other matrix. This approach yields a higher accuracy as seen from Performance Evaluation section.
+Therefore, this problem is turned into an optimization problem to find *X* and *Y*, whose product is a good approximation of *R*. One way to numerically compute this is Alternative Least Square (ALS) [3], where either the user factor matrix or item factor matrix is held constant in turn, and update the other matrix. Once we obtain X and Y, the predicted rating matrix can be simply found by the matrix multiplication of X and Y.
 
 ## Parallel Application and Programming Model
 
@@ -116,7 +118,7 @@ Below, we have shown this pipeline powered by Spark, a distributed cluster-compu
 
 ![alt text](./fig/datapreprocessing_spark.png)
 
-The input of this data pipeline is the raw json file containing all the relevant metadata for a given product. The output of this data pipeline is the utility matrix mentioned above. 
+The input of this data pipeline is the raw json file containing all the metadata for a given product. The output of this data pipeline is the utility matrix mentioned above. 
 
 ### Rating Prediction
 As introduced above, we will use different types of collaborative filtering systems for rating prediction. 
@@ -143,7 +145,7 @@ where X and Y are the latent matrices consisting of summarization of each indivi
 
 ![alt text](./fig/XandY.png)
 
-Once we obtain X and Y from ALS, we can either use R = X<sub>T</sub>Y or a neural network (advanced feature) to calculate prediction.
+Once we obtain X and Y from ALS, we can either use R = X<sup>T</sup>Y or a neural network (advanced feature) to calculate prediction.
 
 In order to increase the performance, all models are running on a multi-node cluster, which is further optimized by increasing the number of threads on each node through OpenMP. To take advantage of this multi-node cluster, we have used the distributed ALS algorithm as follows:
 
