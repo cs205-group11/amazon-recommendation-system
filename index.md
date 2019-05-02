@@ -143,7 +143,7 @@ In order to increase the performance, all models are running on a multi-node clu
 
 ### Overall Programming Model Flowchart
 To summarize, the overall programming model is as follows:
-![alt text](./fig/datapreprocessing_spark.png)
+![alt text](./fig/overall_model.png)
 
 
 ## Platform and Infrastructure
