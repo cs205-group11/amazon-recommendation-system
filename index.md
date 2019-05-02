@@ -72,6 +72,8 @@ In our project, we use two typical recommendation system models to perform bench
 * Standard Collaborative Filtering Model (SCF)
 * Matrix Factorization (MF) optimized through Alternative Least Square (ALS)
 
+In addition, we have another advanced recommendation system based on Neural Network. This new model will be covered in the Advanced Feature section
+
 ### Model Setup
 To begin with, we can assume that we have a *n* × *m* matrix, where *n* represents the number of user and *m* represents the number of products (i.e. the utility matrix shown above). Each entry in this matrix *r<sub>ij</sub>* is the rating given by user *i* to product *j*.
 The overall goal, is to predict a rating that has not yet been given from user *i* to product *j* (i.e. calculate the predicted rating *r<sub>ij</sub>*).
