@@ -143,7 +143,7 @@ For ALS, we are using the following algorithm [5] to iteratively find latent mat
 
 ![alt text](./fig/als.png)
 
-where X and Y are the latent matrices consisting of summarization of each individual user and item in *k* dimension, assuming overall we have *n* users and *m* items. They have the following form:
+where X and Y are the latent matrices consisting of latent vectors for each individual user and item in *k* dimension, assuming overall we have *n* users and *m* items. They have the following form:
 
 ![alt text](./fig/XandY.png)
 
@@ -162,67 +162,8 @@ To summarize, the overall programming model is as follows:
 
 ## Platform and Infrastructure
 
-The tools and infrastructures are as follows:
+In this project, we have used a number of platforms and infrastructures covered in the lecture. The following 
 ![alt text](./fig/infra.png)
-
-## Model Description and Programming Model
-
-Model description here and example image below:
-
-![Branching](https://guides.github.com/activities/hello-world/branching.png)
-
-## Parallel application
-
-Description of parallel application
-
-## Platform and Infrastructure
-
-Description of the platform and infrastructure
-
-*   This is an unordered list following a header.
-*   This is an unordered list following a header.
-*   This is an unordered list following a header.
-
-1.  This is an ordered list following a header.
-2.  This is an ordered list following a header.
-3.  This is an ordered list following a header.
-
-| head1        | head two          | three |
-|:-------------|:------------------|:------|
-| ok           | good swedish fish | nice  |
-| out of stock | good and plenty   | nice  |
-| ok           | good `oreos`      | hmm   |
-| ok           | good `zoute` drop | yumm  |
-
-### Here is an unordered list:
-
-*   Item foo
-*   Item bar
-*   Item baz
-*   Item zip
-
-### And an ordered list:
-
-1.  Item one
-1.  Item two
-1.  Item three
-1.  Item four
-
-### And a nested list:
-
-- level 1 item
-  - level 2 item
-  - level 2 item
-    - level 3 item
-    - level 3 item
-- level 1 item
-  - level 2 item
-  - level 2 item
-  - level 2 item
-- level 1 item
-  - level 2 item
-  - level 2 item
-- level 1 item
 
 * * *
 
