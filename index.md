@@ -162,7 +162,7 @@ To summarize, the overall programming model is as follows:
 
 ## Platform and Infrastructure
 
-In this project, we have used a number of platforms and infrastructures covered in the lecture. The following 
+In this project, we have used a number of platforms and infrastructures covered in the lecture. The following flowchart illustrates the platform that we are using.
 ![alt text](./fig/infra.png)
 
 * * *
