@@ -209,7 +209,7 @@ To get started, follow [Guide: First Access to AWS](https://docs.google.com/docu
 ```
 wget http://snap.stanford.edu/data/amazon/productGraph/aggressive_dedup.json.gz
 ```
-6. Extract the rating data using `gzip`
+6. Extract the rating data using `gzip`.
 ```
 gzip -d aggressive_dedup.json.gz
 ```
@@ -228,12 +228,13 @@ rm -r aggressive_dedup.json
 ```
 git clone https://github.com/JinZhaoHong/cs205_amazon_recommendation.git 
 ```
+* Note: It is possible that `git` is not installed on your virtual machine. If this is the case, you can install git by running this command in the terminal `yum install git-core`.
 
 10. Submit the job.
 ```
 spark-submit --num-executors 8 --executor-cores 32  als_recommendation.py aggressive_dedup.json
 ```
-* To increase executor memory, add the flag
+* To increase executor/driver memory, add the flag
 ``` 
 --driver-memory 2g --executor-memory 2g
 ```
