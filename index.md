@@ -360,7 +360,7 @@ For this application, we have achieved following goals:
 * **Accuracy**: We have tested the prediction accuracy both for ALS and our advanced feature (densely connected neural network). The Mean Absolute Error for ALS is 0.50775 and for the neural network is 0.29846. This is very accurate given that ratings given by users on Amazon ranges from 1 to 5 inclusively.
 * **Speedup**: As shown in the "Performance Evaluation" section above, our application is able to achieve a speedup of **1.34**, when running with 16 threads on each node on a 8-node AWS c5.9xlarge-based cluster.
 * **Throughput**: As shown in the "Performance Evaluation" section above, our application is able to handle up to 100 GB of data.
-* **scalability**: As shown in the "Performance Evaluation" section above, our application is able to process a range of dataset with different sizes. That is, from small dataset (music data with 64,706 reviews) to the entire dataset (over 20 categories with 142.8 million reviews)
+* **Scalability**: As shown in the "Performance Evaluation" section above, our application is able to process a range of dataset with different sizes. That is, from small dataset (music data with 64,706 reviews) to the entire dataset (over 20 categories with 142.8 million reviews)
 
 ## Improvements Suggested
 
