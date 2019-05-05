@@ -276,6 +276,45 @@ How to run tests
 
 Speed-up, throughput, weak and strong scaling
 
+First, we vary the number of nodes (executors) on our cluster.
+
+|  Nodes  | Execution Time (s) | Speedup | 
+|:--:|:--:|:--:|
+| 1 |  3 |  ? |  
+| 2 |  1 |  ? | 
+| 4 |  ? |  ? | 
+| 8 |  ? |  5 |  
+
+A plot illustrating speedup is shown below.
+
+[PLOT]
+
+Second, we vary the number of threads per node (executor) on our cluster. 
+
+|  Threads per Node  | Execution Time (s) | Speedup | 
+|:--:|:--:|:--:|
+| 1 |  3 |  ? |  
+| 2 |  1 |  ? | 
+| 4 |  ? |  ? | 
+| 8 |  ? |  5 | 
+
+A plot illustrating speedup is shown below.
+
+[PLOT]
+
+Third, to test for weak and strong scalability, we run our code using different problem sizes. This is reflected by the size (in gigabytes) of the dataset we use. 
+
+|  Dataset Size (GB)  | Execution Time (s) | Speedup | 
+|:--:|:--:|:--:|
+| 1 |  3 |  ? |  
+| 2 |  1 |  ? | 
+| 4 |  ? |  ? | 
+| 8 |  ? |  5 | 
+
+A plot illustrating speedup is shown below.
+
+[PLOT]
+
 ## Optimizations and Overheads
 
 Discussion about overheads and optimizations done
