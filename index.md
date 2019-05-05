@@ -1,9 +1,3 @@
-Text can be **bold**, _italic_, or ~~strikethrough~~.
-
-[Link to another page](./another-page.html).
-
-There should be whitespace between paragraphs. 
-
 # Introduction
 
 The goal of this project is to parallelize the process of generating product recommendations to Amazon's users. Specifically, we aim to predict, as accurately as possible, the rating a user gives to a particular product. If we are able to make accurate predictions, we can recommend products to users that they have not bought yet. 
