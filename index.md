@@ -232,7 +232,17 @@ git clone https://github.com/JinZhaoHong/cs205_amazon_recommendation.git
 
 10. Submit the job.
 ```
+Yuhao's table
+
+Abhi's table
+
 spark-submit --num-executors 2 --executor-cores 8 --driver-memory 8g --executor-memory 8g  als_recommendation.py aggressive_dedup.json 
+
+spark-submit --num-executors 2 --executor-cores 4 --driver-memory 8g --executor-memory 8g  als_recommendation.py aggressive_dedup.json 
+
+spark-submit --num-executors 2 --executor-cores 2 --driver-memory 8g --executor-memory 8g  als_recommendation.py aggressive_dedup.json 
+
+spark-submit --num-executors 2 --executor-cores 1 --driver-memory 8g --executor-memory 8g  als_recommendation.py aggressive_dedup.json 
 
 Zheyu's table
 spark-submit --num-executors 8 --executor-cores 16 --driver-memory 8g --executor-memory 4g  als_recommendation.py aggressive_dedup.json 
