@@ -232,7 +232,14 @@ git clone https://github.com/JinZhaoHong/cs205_amazon_recommendation.git
 
 10. Submit the job.
 ```
+spark-submit --num-executors 8 --executor-cores 8 --driver-memory 8g --executor-memory 8g  als_recommendation.py aggressive_dedup.json
+
 spark-submit --num-executors 8 --executor-cores 4 --driver-memory 10g --executor-memory 15g  als_recommendation.py aggressive_dedup.json
+
+spark-submit --num-executors 8 --executor-cores 2 --driver-memory 20g --executor-memory 25g  als_recommendation.py aggressive_dedup.json
+
+spark-submit --num-executors 8 --executor-cores 1 --driver-memory 20g --executor-memory 50g  als_recommendation.py aggressive_dedup.json 
+
 ```
 * To increase executor/driver memory, add the flag
 ``` 
