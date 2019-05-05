@@ -351,8 +351,6 @@ Discussion about advanced features here
 
 # Discussion
 
-Discuss
-
 ## Goals Achieved
 
 Goals Achieved here
@@ -376,6 +374,12 @@ Future work here
 * * *
 
 # References
+[1] Ups and downs: Modeling the visual evolution of fashion trends with one-class collaborative filtering
+R. He, J. McAuley
+WWW, 2016
+[2] Alec Radford, Rafal Jozefowicz, and Ilya Sutskever. 2017. Learning to generate reviews and discovering sentiment. CoRR, abs/1704.01444.
+[3] Alternative Least Square
+[5] Stanford ALS paper
 [6]https://markus-beuckelmann.de/blog/boosting-numpy-blas.html
 [7]https://software.intel.com/en-us/distribution-for-python
 [8]https://software.intel.com/en-us/articles/intel-math-kernel-library-intel-mkl-using-intel-mkl-with-threaded-applications#3
