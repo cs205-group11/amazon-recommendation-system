@@ -256,7 +256,12 @@ hadoop fs -ls
 hadoop fs -rm -r X
 ```
 
+[TODO: Fix]
 
+```
+wget http://registrationcenter-download.intel.com/akdlm/irc_nas/tec/15293/l_pythoni3_p_2019.3.075.tar.gz
+follow installation instructions: https://software.intel.com/en-us/distribution-for-python/choose-download/linux
+```
 
 ## How to Run Tests
 
