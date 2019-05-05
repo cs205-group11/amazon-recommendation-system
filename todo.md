@@ -4,9 +4,9 @@ Website
 2. Complete step-by-step instructions [AV]
 3. Matplotlib plots [AV]
 4. References [ZW]
-5. Emphasize the usage of OpenMP [ZW]
-6. Discussion - goals achieved [ZW]
-7. Discussion - improvements suggested [ZW]
+5. Emphasize the usage of OpenMP [ZW] Done
+6. Discussion - goals achieved [ZW] Done
+7. Discussion - improvements suggested [ZW] Done
 8. Discussion - interesting Insights [AV]
 9. Discussion - lessons Learnt [AV]
 10. Discussion - future work [AV]
