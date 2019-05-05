@@ -351,13 +351,13 @@ Discussion about advanced features here
 
 # Discussion
 
-In this project, we designed, implemented and tested the distributed recommendation system for over 100 GB data from Amazon. We first identified the need for big compute and big data, and based on these needs we decided to use Spark and OpenMP as our basic infrastructure and platform. We then identify the biggest overhead in our application is the data loading process. To mitigate this overhead, we use XXXXXX. We then test our application on a variety of data sizes (scalability, throughput), number of threads, number of nodes (speedup). 
+In this project, we designed, implemented and tested the distributed recommendation system for over 100 GB data from Amazon. We first identified the need for big compute and big data, and based on these needs we decided to use Spark and OpenMP as our basic infrastructure and platform. We then identified the main overhead in our application is the data loading process. To mitigate this overhead, we tried both cache and adjustment of executor memory and it turned out that adjustment of executor memory is a more effective approach. We then tested our application on a variety of data sizes (scalability, throughput), number of threads, number of nodes (speedup). 
 
 ## Goals Achieved
 
 For this application, we have achieved following goals:
 * **Overall**: We have successfully build a **distributed recommendation system based on Spark and OpenMP**, which is able to intelligently recommend costumers with new products, based on his and other customers' purchasing history.
-* **Accuracy**: 
+* **Accuracy**: We have tested the prediction accuracy both for ALS and our advanced feature (densely connected neural network). The Mean Absolute Error for ALS is 0.50775 and for the neural network is 0.29846. This is very accurate given that ratings given by users on Amazon ranges from 1 to 5 inclusively.
 * **Speedup**: As shown in the "Performance Evaluation" section above, our application is able to achieve a speedup of **1.34**, when running with 16 threads on each node on a 8-node AWS c5.9xlarge-based cluster.
 * **Throughput**: As shown in the "Performance Evaluation" section above, our application is able to handle up to 100 GB of data.
 * **scalability**: As shown in the "Performance Evaluation" section above, our application is able to process a range of dataset with different sizes. That is, from small dataset (music data with 64,706 reviews) to the entire dataset (over 20 categories with 142.8 million reviews)
