@@ -353,11 +353,15 @@ Discussion about advanced features here
 
 ## Goals Achieved
 
-Goals Achieved here
+For this application, we have achieved following goals:
+* **Overall**: We have successfully build a **distributed recommendation system based on Spark**, which is able to intelligently recommend costumers with new products, based on his and other customers' purchasing history.
+* **Speedup**: As shown in the "Performance Evaluation" section above, our application is able to achieve a speedup of **1.34**, when running with 16 threads on each node on a 8-node AWS c5.9xlarge-based cluster.
+* **Throughput**: As shown in the "Performance Evaluation" section above, our application is able to handle up to 100 GB of data.
+* **Scalibility**: As shown in the "Performance Evaluation" section above, our application is able to process a range of dataset with different sizes. That is, from small dataset (music data with 64,706 reviews) to the entire dataset (over 20 categories with 142.8 million reviews)
 
 ## Improvements Suggested
 
-Improvements suggested here
+In retrospect, some improvents ca
 
 ## Interesting Insights
 
