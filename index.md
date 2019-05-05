@@ -16,7 +16,7 @@ There are two broad approaches to generate recommendations:
 
 ### Collaborative Filtering
 
-In order to perform collaborative filtering, one needs to create a **utility matrix** [[4](http://infolab.stanford.edu/~ullman/mmds/ch9.pdf)]. This rows of this utility matrix correspond to users, and the columns correspond to products. Each entry in the matrix is the rating (1-5, both inclusive) given to a product by a user. For example, let us say we have 6 products: P1 through P6, and 5 users: U1 through U5. Since all users do not rate all products, the utility matrix ends up being quite sparse. The corresponding utility matrix looks as follows: 
+In order to perform collaborative filtering, one needs to create a **utility matrix** [[4](http://infolab.stanford.edu/~ullman/mmds/ch9.pdf)]. These rows of this utility matrix correspond to users, and the columns correspond to products. Each entry in the matrix is the rating (1-5, both inclusive) given to a product by a user. For example, let us say we have 6 products: P1 through P6, and 5 users: U1 through U5. Since all users do not rate all products, the utility matrix ends up being quite sparse. The corresponding utility matrix looks as follows: 
 
 |    | P1 | P2 | P3 | P4 | P5 | P6 |
 |:---|:---|:---|:---|:---|:---|:---|
@@ -40,7 +40,7 @@ In order to compute similarity scores and generate predictions, we rely on a lot
 
 ## Data
 
-The raw dataset that we use for this project is the "Amazon Product Data" that was collected by Julian McAuley et al. from University of California, San Diego (UCSD) [1]. We came across this dataset because it was used extensively in machine learning applications such as [2]. This dataset contains 142.8 million product reviews, as well as the associated metadata from Amazon spannning May 1996 to July 2014. Therefore, the size of this dataset is considerable (over 100 GB), and it is not practical to fit all the data on a single machine and to make useful recommendations. A sample review of this dataset is as follows:
+The raw dataset that we use for this project is the "Amazon Product Data" that was collected by Julian McAuley et al. from University of California, San Diego (UCSD) [1]. We came across this dataset because it was used extensively in machine learning applications such as [2]. This dataset contains 142.8 million product reviews, as well as the associated metadata from Amazon spanning May 1996 to July 2014. Therefore, the size of this dataset is considerable (over 100 GB), and it is not practical to fit all the data on a single machine and to make useful recommendations. A sample review of this dataset is as follows:
 ```
 {
   "reviewerID": "A2SUAM1J3GNN3B",
@@ -60,7 +60,7 @@ As shown above, each product contains a range of attributes. The most interestin
 * `asin`: a unique ID for the product.
 * `overall`: the rating given by reviewer `reviewerID` to product `asin`, ranging from 1 to 5. 
 
-## Recommandation System Model
+## Recommendation System Model
 
 In our project, we use two typical recommendation system models to perform benchmarking, based on the programming model mentioned in the next section. These two recommendation system models are:
 * Standard Collaborative Filtering Model (SCF)
@@ -81,7 +81,7 @@ The overall goal, is to predict a rating that has not yet been given from user *
 | U5 |  3 |  ? |  ? |  5 |  ? |  4 |
 
 ### Standard Collaborative Filtering Model (SCF)
-In SCF, we predict the rating based on the nearest neighborhood algorithm (kNN). More specifically, we can calculate the **cosine similarity** between the current user *i* to all other users, and select top *k* users based on the similarity score. From these *k* users, we can calculate the weighted avaerage of ratings for product *j* with the cosine similarity as weights. This averaged rating is used as *r<sub>ij</sub>*.
+In SCF, we predict the rating based on the nearest neighborhood algorithm (kNN). More specifically, we can calculate the **cosine similarity** between the current user *i* to all other users, and select top *k* users based on the similarity score. From these *k* users, we can calculate the weighted average of ratings for product *j* with the cosine similarity as weights. This averaged rating is used as *r<sub>ij</sub>*.
 
 The **advantage** of this model is as follows:
 * Easy to understand
@@ -112,7 +112,7 @@ Below, we have shown this pipeline powered by Spark, a distributed cluster-compu
 
 ![alt text](./fig/datapreprocessing_spark.png)
 
-The input of this data pipeline is the raw json file containing all the metadata for a given product. The output of this data pipeline is the utility matrix mentioned above. 
+The input of this data pipeline is the raw `JSON` file containing all the metadata for a given product. The output of this data pipeline is the utility matrix mentioned above. 
 
 ### Rating Prediction
 As introduced above, we will use different types of collaborative filtering systems for rating prediction. 
@@ -356,7 +356,7 @@ In this project, we designed, implemented and tested the distributed recommendat
 ## Goals Achieved
 
 For this application, we have achieved following goals:
-* **Overall**: We have successfully build a **distributed recommendation system based on Spark and OpenMP**, which is able to intelligently recommend costumers with new products, based on his and other customers' purchasing history.
+* **Overall**: We have successfully built a **distributed recommendation system based on Spark and OpenMP**, which is able to intelligently recommend costumers with new products, based on his and other customers' purchasing history.
 * **Accuracy**: We have tested the prediction accuracy both for ALS and our advanced feature (densely connected neural network). The Mean Absolute Error for ALS is 0.50775 and for the neural network is 0.29846. This is very accurate given that ratings given by users on Amazon ranges from 1 to 5 inclusively.
 * **Speedup**: As shown in the "Performance Evaluation" section above, our application is able to achieve a speedup of **1.34**, when running with 16 threads on each node on a 8-node AWS c5.9xlarge-based cluster.
 * **Throughput**: As shown in the "Performance Evaluation" section above, our application is able to handle up to 100 GB of data.
@@ -364,7 +364,7 @@ For this application, we have achieved following goals:
 
 ## Improvements Suggested
 
-In retrospect, some improvents that could be done include:
+In retrospect, some improvements that could be done include:
 * Implement our application on GPU instances to facilitate larger parallelism
 * Implement distributed neural network
 * Implement online recommendation system using streaming data 
