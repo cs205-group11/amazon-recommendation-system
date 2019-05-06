@@ -323,11 +323,17 @@ Assume we have user i and product p. The naive Alternating Least Squares method 
 
 ### Implementation Details
 
+The implementation of the neural network uses Keras with Tensorflow. 
+
 ![alt text](./fig/DNN.png)
 
 ### Result
 
 The baseline dot product using our recommendation_als.py on Kindle dataset with hidden dimension = 20 and iteration = 15 has a mean absolute error of 0.50775. The nerual network on the same setting yields a mean absolute error of 0.29846. 
+
+## Intel Python Library with Advanced Optimization
+
+## Caching and Executor Memory Tuning
 
 * * *
 
