@@ -7,9 +7,9 @@ Website
 5. Emphasize the usage of OpenMP [ZW] Done
 6. Discussion - goals achieved [ZW] Done
 7. Discussion - improvements suggested [ZW] Done
-8. Discussion - interesting Insights [AV]
-9. Discussion - lessons Learnt [AV]
-10. Discussion - future work [AV]
+8. Discussion - interesting Insights [AV] Done
+9. Discussion - lessons Learnt [AV] Done
+10. Discussion - future work [AV] Done
 11. Add screenshots [ZJ, AV]
 12. Add tests on the web page [ZW]
 13. Update the need for big data and big compute [AV]
