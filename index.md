@@ -332,6 +332,9 @@ The baseline dot product using our recommendation_als.py on Kindle dataset with 
 
 ## Caching and Executor Memory Tuning
 
+Due to the large amount data loaded into the executor, we often run into Java Out of Memory error. Therefore, we need to dynamically allocate the amount of memory assigned to each thread as we change the total number of running thread. 
+
+
 * * *
 
 # Discussion
