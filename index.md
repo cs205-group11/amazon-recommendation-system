@@ -159,7 +159,7 @@ To summarize, the overall programming model is as follows:
 In this project, we have used a number of platforms and infrastructures covered in the lecture. The following flowchart illustrates the platform that we are using.
 ![alt text](./fig/infra.png)
 
-*Note on the usage of OpenMP*: By default, Python is subject to Global Interpreter Lock (GIL), which prevents more than one threads to run at a time. However, the underlying libraries of `Numpy` and `SciPy`  are written in C, making it possible for multithreading optimization. For linear algebra related applications, the underlying library is BLAS, and it includes some variants such as OpenBLAS, Intel MKL and ATLAS. A benchmark regarding their performance can be found here [6]. For our application, we decided to use Intel MKL, since it provides the highest speedup among all BLAS variants. Intel MKL is now packaged within Intel Distribution for Python [7], which is used in our application (see "How to Use our Code" section below). By using Intel Distribution for Python, we can achieve OpenMP's multithreading performance, and yet enjoy the simplicity of Python [8]. In other words, thanks to Intel Distribution for Python, all Numpy-related code is automatically optimized through OpenMP, and we can control the number of threads in the same way as a C program: ```export OMP_NUM_THREADS=<number of threads to use>```
+*Note on the usage of OpenMP*: By default, Python is subject to Global Interpreter Lock (GIL), which prevents more than one threads to run at a time. However, the underlying libraries of `Numpy` and `SciPy`  are written in C, making it possible for multithreading optimization. For linear algebra related applications, the underlying library is BLAS, and it includes some variants such as OpenBLAS, Intel MKL and ATLAS. A benchmark regarding their performance can be found here [6]. For our application, we decided to use Intel MKL, since it provides the highest speedup among all BLAS variants. Intel MKL is now packaged within Intel Distribution for Python [7], which is used in our application (see "How to Use our Code" section below). By using Intel Distribution for Python, we can achieve OpenMP's multithreading performance, and yet enjoy the simplicity of Python [8]. In other words, thanks to Intel's Distribution for Python, all Numpy-related code is automatically optimized through OpenMP, and we can control the number of threads in the same way as a C program: ```export OMP_NUM_THREADS=<number of threads to use>```
 * * *
 
 # Usage Instructions
@@ -182,28 +182,32 @@ To get started, follow [Guide: First Access to AWS](https://docs.google.com/docu
 
 1. Log in AWS Management Console.
 
-2. Follow [Guide: Spark Cluster on AWS](https://docs.google.com/document/d/1mBQAHfqlpu2WGeu48MGmNjo-m4r3IZha1HqFGXqcw_k/edit#) to create an EMR cluster. When asked to choose instance type, select c5.9xlarge with 9 nodes (1 master node + 8 worker nodes)
-  * Note: It is possible that your limit for creating this type of instances is too low (e.g. 0). If this is the case, you need to contact the technical support and create a request to increase this limit. 
+2. Follow [Guide: Spark Cluster on AWS](https://docs.google.com/document/d/1mBQAHfqlpu2WGeu48MGmNjo-m4r3IZha1HqFGXqcw_k/edit#) to create an EMR cluster. When asked to choose instance type, select c5.9xlarge with 9 nodes (1 master node + 8 worker nodes). Some of the specifications and libraries of the cluster that we used are as follows: 
 
-3. `ssh` into the all nodes (including master and all worker nodes). Follow [this instruction](https://software.intel.com/en-us/distribution-for-python/choose-download/linux) to download and install Intel Distribution for Python for **all nodes**. This version of Python is built upon Intel Math Kernel Library(MKL) and it outperforms the original version of Python in numerical calculations since they are optimized on Intel processors. 
+* Core Hadoop: Hadoop 2.8.5 with Ganglia 3.7.2, Hive 2.3.4, Hue 4.3.0, Mahout 0.13.0, Pig 0.17.0, and Tez 0.9.1
 
-4. Before downloading the dataset, you need to increase the volume of the virtual machine since we have a large dataset. To do this we need to:
+**Note**: It is possible that your limit for creating this type of instances is too low (e.g. 0). If this is the case, you need to contact the technical support and create a request to increase this limit. 
+
+3. The next step is to increase the volume of all nodes on the virtual machine to deal with the large dataset. The default partition size is not able to load the entire dataset. The following process must be followed for all 8 code nodes and 1 master node: 
 
 * Navigate back to the EMR web interface, and click the 'Hardware' tab
-* Click the ID of the master/or worker node
-* Click the EC2 instance ID
+* Click the ID of the master/or worker node 
+* Click the EC2 instance ID 
 * In the 'Description' tab click on root device e.g. /dev/xvda
 * Click on the volume link (e.g. vol-094ce3910j)
 * Click on actions and modify the volume. You may change from 10 GB to 256 GB.
 * Navigate back to the terminal, and check partition size using `lsblk`
 * In the terminal, run `sudo growpart /dev/xvda 1`
 * In the terminal, run `sudo resize2fs /dev/nvme0n1p1`
-* Finally, to check the updated storage, we can use this command `df -h`
+* Finally, to check the updated storage, we can use this command `df -h`. Your partition size should be 256 GB now. 
 
-5. Download the rating dataset. It may take ~1 hour to complete this process.
+4. `ssh` into the all nodes (including master and all worker nodes). Follow [this instruction](https://software.intel.com/en-us/distribution-for-python/choose-download/linux) to download and install Intel Distribution for Python for **all nodes**. This version of Python is built upon Intel Math Kernel Library(MKL) and it outperforms the original version of Python in numerical calculations since they are optimized on Intel processors. 
+
+5. Download the rating dataset. It may take a while (~40 mins) to complete this process depending on your network bandwidth.
 ```
 wget http://snap.stanford.edu/data/amazon/productGraph/aggressive_dedup.json.gz
 ```
+
 6. Extract the rating data using `gzip`.
 ```
 gzip -d aggressive_dedup.json.gz
@@ -219,13 +223,46 @@ hadoop fs -put aggressive_dedup.json
 rm -r aggressive_dedup.json 
 ```
 
-9. Clone the GitHub repository containing all source code.
+9. Clone the GitHub repository containing all source code. 
 ```
 git clone https://github.com/JinZhaoHong/cs205_amazon_recommendation.git 
 ```
+
 * Note: It is possible that `git` is not installed on your virtual machine. If this is the case, you can install git by running this command in the terminal `yum install git-core`.
 
-10. Submit the job.
+10. We use the `als_recommendation.py` file. Change directory into the github repository as follows: 
+```
+cd cs205_amazon_recommendation/
+```
+
+11. Submit the job. Here is an example command to carry this out. 
+
+```
+spark-submit --num-executors 2 --executor-cores 8 --driver-memory 8g --executor-memory 8g  als_recommendation.py aggressive_dedup.json 
+```
+
+* To increase executor/driver memory, we can add the flags:
+``` 
+--driver-memory 2g --executor-memory 2g
+```
+
+* To increase the number of executors and the number of executor cores, we can add the flags:
+``` 
+--num-executors 2 --executor-cores 8
+```
+
+12. While this job is being executed, you will see a series of outputs in the terminal. When this job is completed, you should see some newly generated folder on the hdfs.
+```
+hadoop fs -ls
+```
+
+13. If you run the code again, don't forget to delete the output generated by the previous run. For example:
+```
+hadoop fs -rm -r X
+```
+
+## How to Run Tests
+
 ```
 Yuhao's table
 
@@ -251,44 +288,8 @@ spark-submit --num-executors 8 --executor-cores 2 --driver-memory 20g --executor
 spark-submit --num-executors 8 --executor-cores 1 --driver-memory 20g --executor-memory 50g  als_recommendation.py aggressive_dedup.json 
 
 ```
-* To increase executor/driver memory, add the flag
-``` 
---driver-memory 2g --executor-memory 2g
-```
-
-11. While this job is being executed, you will see a series of outputs in the terminal. When this job is completed, you should see some newly generated folder on the hdfs.
-```
-hadoop fs -ls
-```
-
-12. If you run the code again, don't forget the delete the output generated by the previous run. For example:
-```
-hadoop fs -rm -r X
-```
-
-[TODO: Fix]
-
-```
-wget http://registrationcenter-download.intel.com/akdlm/irc_nas/tec/15293/l_pythoni3_p_2019.3.075.tar.gz
-follow installation instructions: https://software.intel.com/en-us/distribution-for-python/choose-download/linux
-```
-
-## How to Run Tests
 
 How to run tests
-
-### Definition lists can be used with HTML syntax.
-
-<dl>
-<dt>Name</dt>
-<dd>Godzillaa</dd>
-<dt>Born</dt>
-<dd>1952</dd>
-<dt>Birthplace</dt>
-<dd>Japan</dd>
-<dt>Color</dt>
-<dd>Green</dd>
-</dl>
 
 * * *
 
