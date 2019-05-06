@@ -300,33 +300,26 @@ How to run tests
 
 Speed-up, throughput, weak and strong scaling
 
-First, we vary the number of nodes (executors) on our cluster.
+First, we vary the number of nodes (executors) on our cluster. The number of threads in each case was 8. We also utilized caching on memory and RDD.
 
-|  Nodes  | Execution Time (s) | Speedup | 
-|:--:|:--:|:--:|
-| 1 |  3 |  ? |  
-| 2 |  1 |  ? | 
-| 4 |  ? |  ? | 
-| 8 |  ? |  5 |  
+|  Nodes  | Execution Time (s) | Speedup | Flags
+|:--:|:--:|:--:|:--:|
+| 1 | 222 |  1.00 | --num-executors 1 --executor-cores 8 --driver-memory 8g --executor-memory 8g | 
+| 2 | 222 |  1.00 | --num-executors 2 --executor-cores 8 --driver-memory 8g --executor-memory 8g |
+| 4 | 222 |  1.00 | --num-executors 4 --executor-cores 1 --driver-memory 8g --executor-memory 8g |
+| 8 | 216 |  1.03 | --num-executors 8 --executor-cores 1 --driver-memory 8g --executor-memory 8g |
 
-A plot illustrating speedup is shown below.
+Second, we vary the number of threads per node (executor) on our cluster. The number of nodes in each case was 8. We also utilized caching on memory and RDD.
 
-[PLOT]
+|  Threads per Node  | Execution Time (s) | Speedup | Flags
+|:--:|:--:|:--:|:--:|
+| 1  | 282 | 1.00 | --num-executors 8 --executor-cores 16 --driver-memory 8g --executor-memory 4g | 
+| 2  | 222 | 1.27 | --num-executors 8 --executor-cores 16 --driver-memory 8g --executor-memory 4g |
+| 4  | 210 | 1.34 | --num-executors 8 --executor-cores 16 --driver-memory 8g --executor-memory 4g |
+| 8  | 216 | 1.31 | --num-executors 8 --executor-cores 16 --driver-memory 8g --executor-memory 4g |
+| 16 | 210 | 1.34 | --num-executors 8 --executor-cores 16 --driver-memory 8g --executor-memory 4g |
 
-Second, we vary the number of threads per node (executor) on our cluster. 
-
-|  Threads per Node  | Execution Time (s) | Speedup | 
-|:--:|:--:|:--:|
-| 1 |  3 |  ? |  
-| 2 |  1 |  ? | 
-| 4 |  ? |  ? | 
-| 8 |  ? |  5 | 
-
-A plot illustrating speedup is shown below.
-
-[PLOT]
-
-Third, to test for weak and strong scalability, we run our code using different problem sizes. This is reflected by the size (in gigabytes) of the dataset we use. 
+Third, to test for weak and strong scalability, we run our code using different problem sizes. This is reflected by the size (in gigabytes) of the dataset we use. We use 8 nodes and 8 threads and carry out caching on memory and RDD.
 
 |  Dataset Size (GB)  | Execution Time (s) | Speedup | 
 |:--:|:--:|:--:|
