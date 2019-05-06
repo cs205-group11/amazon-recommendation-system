@@ -274,8 +274,6 @@ How to run tests
 
 ## Performance Evaluation
 
-Speed-up, throughput, weak and strong scaling
-
 First, we vary the number of nodes (executors) on our cluster. The number of threads in each case was 8. We also utilized caching on memory and RDD.
 
 |  Nodes  | Execution Time (s) | Speedup | Flags
@@ -295,15 +293,15 @@ Second, we vary the number of threads per node (executor) on our cluster. The nu
 | 8  | 216 | 1.31 | --num-executors 8 --executor-cores 8 --driver-memory 8g  --executor-memory 8g  |
 | 16 | 210 | 1.34 | --num-executors 8 --executor-cores 16 --driver-memory 8g --executor-memory 4g  |
 
-Third, to test for weak scalability, we run our code using different problem sizes. This is reflected by the size (in gigabytes) of the dataset we use. We use 8 nodes and 8 threads and carry out caching on memory and RDD.
+Third, to test for weak scalability, we run our code using different problem sizes. This is reflected by the size (in gigabytes) of the dataset we use. We use 8 nodes and 8 threads and carry out caching on memory and RDD. **Note**: the sizes are given for the zipped files. The unzipped files are ~4x larger.
 
 |  Dataset Name | Dataset Size (GB)  | Execution Time (s) |
 |:--:|:--:|:--:|
-| Music |   | 17 |  
-| Movies and TV | ? | 19 | 
-| Kindle |  ? |  19 | 
-| Books |  ? |  26 | 
-| Full Dataset | ? | 216 |
+| Music | 0.03 | 17 | 
+| Kindle | 0.30 |  19 | 
+| Movies and TV | 0.68 | 19 | 
+| Books | 3 |  26 | 
+| Full Dataset | 17.7 | 216 |
 
 ## Optimizations and Overheads
 
