@@ -264,32 +264,6 @@ hadoop fs -rm -r X
 
 ## How to Run Tests
 
-```
-Yuhao's table
-
-Abhi's table
-
-spark-submit --num-executors 2 --executor-cores 8 --driver-memory 8g --executor-memory 8g  als_recommendation.py aggressive_dedup.json 
-
-spark-submit --num-executors 2 --executor-cores 4 --driver-memory 8g --executor-memory 8g  als_recommendation.py aggressive_dedup.json 
-
-spark-submit --num-executors 2 --executor-cores 2 --driver-memory 8g --executor-memory 8g  als_recommendation.py aggressive_dedup.json 
-
-spark-submit --num-executors 2 --executor-cores 1 --driver-memory 8g --executor-memory 8g  als_recommendation.py aggressive_dedup.json 
-
-Zheyu's table
-spark-submit --num-executors 8 --executor-cores 16 --driver-memory 8g --executor-memory 4g  als_recommendation.py aggressive_dedup.json 
-
-spark-submit --num-executors 8 --executor-cores 8 --driver-memory 8g --executor-memory 8g  als_recommendation.py aggressive_dedup.json
-
-spark-submit --num-executors 8 --executor-cores 4 --driver-memory 10g --executor-memory 15g  als_recommendation.py aggressive_dedup.json
-
-spark-submit --num-executors 8 --executor-cores 2 --driver-memory 20g --executor-memory 25g  als_recommendation.py aggressive_dedup.json
-
-spark-submit --num-executors 8 --executor-cores 1 --driver-memory 20g --executor-memory 50g  als_recommendation.py aggressive_dedup.json 
-
-```
-
 How to run tests
 
 * * *
@@ -337,10 +311,10 @@ Discussion about overheads and optimizations done
 
 # Advanced Features
 
-## Alternating Least Squares
+## Improving ALS Prediction Accuracy using a Neural Network
 
 ### Summary
-Assume we have user i and product p. The naive Alternating Least Squares method uses dot product between two latent vectors(each has 20 dimensions, for example) to generate the predicted rating. However, given two latent vectors we can explore more sophisicated relationships than simple dot product. Therefore, we implemented a densely connected nerual network as a post-processing step on all the generated latent vectors to generate the ratings. A densely connected nerual network is a universal functional approximator that allows it to approximate any distribution. So if there are operations better than dot product, we will likely to find it.
+Assume we have user i and product p. The naive Alternating Least Squares method uses dot product between two latent vectors(each has 20 dimensions, for example) to generate the predicted rating. However, given two latent vectors we can explore more sophisicated relationships than simple dot product. Therefore, we implemented a densely connected nerual network as a post-processing step on all the generated latent vectors to generate the ratings. A densely connected neural network is a universal functional approximator that can approximate any distribution. So we use this method in order to improve our accuracy (measured using mean absolute error (MAE)).
 
 ### Implementation Details
 
