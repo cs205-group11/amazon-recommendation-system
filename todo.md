@@ -19,11 +19,12 @@ Website
 
 Poster
 
-1. Add design and methodology writeup and figures [AV]
+1. ~Add design and methodology writeup and figures [AV]~
 2. ~Add background and motivation writeup [ZW]~
 3. ~Add background and motivation figures and equations [ZW]~
-4. Add conclusion and future work [AV]
-5. Add references [ZW]
+4. ~Add conclusion and future work [AV]~
+5. ~Add references [ZW]~
+6. Add results and plots.
 
 Others
 
