@@ -354,6 +354,7 @@ Assume we have user i and product p. The naive Alternating Least Squares method 
 
 ### Implementation Details
 
+![alt text](./fig/DNN.png)
 
 ### Result
 
