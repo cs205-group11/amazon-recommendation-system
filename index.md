@@ -313,11 +313,11 @@ Second, we vary the number of threads per node (executor) on our cluster. The nu
 
 |  Threads per Node  | Execution Time (s) | Speedup | Flags
 |:--:|:--:|:--:|:--:|
-| 1  | 282 | 1.00 | --num-executors 8 --executor-cores 16 --driver-memory 8g --executor-memory 4g | 
-| 2  | 222 | 1.27 | --num-executors 8 --executor-cores 16 --driver-memory 8g --executor-memory 4g |
-| 4  | 210 | 1.34 | --num-executors 8 --executor-cores 16 --driver-memory 8g --executor-memory 4g |
-| 8  | 216 | 1.31 | --num-executors 8 --executor-cores 16 --driver-memory 8g --executor-memory 4g |
-| 16 | 210 | 1.34 | --num-executors 8 --executor-cores 16 --driver-memory 8g --executor-memory 4g |
+| 1  | 282 | 1.00 | --num-executors 8 --executor-cores 1 --driver-memory 20g --executor-memory 50g | 
+| 2  | 222 | 1.27 | --num-executors 8 --executor-cores 2 --driver-memory 20g --executor-memory 25g |
+| 4  | 210 | 1.34 | --num-executors 8 --executor-cores 4 --driver-memory 10g --executor-memory 15g |
+| 8  | 216 | 1.31 | --num-executors 8 --executor-cores 8 --driver-memory 8g  --executor-memory 8g  |
+| 16 | 210 | 1.34 | --num-executors 8 --executor-cores 16 --driver-memory 8g --executor-memory 4g  |
 
 Third, to test for weak scalability, we run our code using different problem sizes. This is reflected by the size (in gigabytes) of the dataset we use. We use 8 nodes and 8 threads and carry out caching on memory and RDD.
 
