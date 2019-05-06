@@ -13,25 +13,11 @@ The goal of this project is to parallelize the process of generating product rec
 
 ## Existing Solutions to the Problem
 
-There are two broad approaches to generate recommendations: 
+There are two broad approaches to generate recommendations [1]: 
 
 * Content-based systems: these systems aim to assess the features of the products being bought. They aim to classify products into different clusters or categories and then recommend other products within this cluster or category. Some examples of this technique include recommending athletic wear to customers who have bought sports equipment or recommending horror movies to customers who have watched other horror movies. 
 
 * Collaborative filtering systems: these systems aim to assess the users purchasing items. Specifically, they provide a metric to compare how similar two users are and then recommend products that users that are similar to the target user rated highly. Our project will follow this approach and we analyze a few different methods and algorithms in the broad domain of collaborative filtering, including Standard Collaborative Filtering Model (SCF) and Matrix Factorization (MF) optimized through Alternative Least Square (ALS). 
-
-### Collaborative Filtering
-
-In order to perform collaborative filtering, one needs to create a **utility matrix** [1]. These rows of this utility matrix correspond to users, and the columns correspond to products. Each entry in the matrix is the rating (1-5, both inclusive) given to a product by a user. For example, let us say we have 6 products: P1 through P6, and 5 users: U1 through U5. Since all users do not rate all products, the utility matrix ends up being quite sparse. The corresponding utility matrix looks as follows: 
-
-|    | P1 | P2 | P3 | P4 | P5 | P6 |
-|:---|:---|:---|:---|:---|:---|:---|
-| U1 |  3 |    |  4 |  5 |    |    |
-| U2 |  1 |    |    |    |  5 |    |
-| U3 |    |    |  4 |    |    |  3 |
-| U4 |    |  5 |  2 |    |  5 |    |
-| U5 |  3 |    |    |  5 |    |  4 |
-
-Now, in order to recommend products to a new user, U6, we must first find users in our dataset who are similar to U6. In order to do this, we use a metric called **[cosine similarity](https://en.wikipedia.org/wiki/Cosine_similarity)**, where U6 is treated like a vector and compared with other users in the dataset, also treated as vectors. We essentially use the [dot product](https://en.wikipedia.org/wiki/Dot_product) between two vectors to compute the angle between them. The smaller the angle, the closer the two vectors are to each other and the more similar the users. We then recommend U6 products that these similar users have rated highly.
 
 ## Need for Big Data and Big Compute
 
@@ -74,7 +60,17 @@ In our project, we use two typical recommendation system models to perform bench
 In addition, we have another advanced recommendation system based on Neural Network. This new model will be covered in the Advanced Feature section.
 
 ### Model Setup
-To begin with, we can assume that we have a *n* × *m* matrix, where *n* represents the number of user and *m* represents the number of products (i.e. the utility matrix shown above). Each entry in this matrix *r<sub>ij</sub>* is the rating given by user *i* to product *j*.
+
+To begin with, we can assume that we have a *n* × *m* **utility matrix** [1] matrix, where *n* represents the number of user and *m* represents the number of products (i.e. the utility matrix shown above). Each entry in this matrix *r<sub>ij</sub>* is the rating given by user *i* to product *j*. For example, let us say we have 6 products: P1 through P6, and 5 users: U1 through U5. Since all users do not rate all products, the utility matrix ends up being quite sparse. The corresponding utility matrix looks as follows: 
+
+|    | P1 | P2 | P3 | P4 | P5 | P6 |
+|:---|:---|:---|:---|:---|:---|:---|
+| U1 |  3 |    |  4 |  5 |    |    |
+| U2 |  1 |    |    |    |  5 |    |
+| U3 |    |    |  4 |    |    |  3 |
+| U4 |    |  5 |  2 |    |  5 |    |
+| U5 |  3 |    |    |  5 |    |  4 |
+
 The overall goal, is to predict a rating that has not yet been given from user *i* to product *j* (i.e. calculate the predicted rating *r<sub>ij</sub>*).
 
 |    | P1 | P2 | P3 | P4 | P5 | P6 |
@@ -86,7 +82,8 @@ The overall goal, is to predict a rating that has not yet been given from user *
 | U5 |  3 |  ? |  ? |  5 |  ? |  4 |
 
 ### Standard Collaborative Filtering Model (SCF)
-In SCF, we predict the rating based on the nearest neighborhood algorithm (kNN). More specifically, we can calculate the **cosine similarity** between the current user *i* to all other users, and select top *k* users based on the similarity score. From these *k* users, we can calculate the weighted average of ratings for product *j* with the cosine similarity as weights. This averaged rating is used as *r<sub>ij</sub>*.
+
+In SCF, we predict the rating based on the nearest neighborhood algorithm (kNN). More specifically, we can calculate the **[cosine similarity](https://en.wikipedia.org/wiki/Cosine_similarity)** between the current user *i* to all other users, and select top *k* users based on the similarity score. From these *k* users, we can calculate the weighted average of ratings for product *j* with the cosine similarity as weights. We essentially use the [dot product](https://en.wikipedia.org/wiki/Dot_product) between two vectors to compute the angle between them. The smaller the angle, the closer the two vectors are to each other and the more similar the users. We then recommend products to users that users similar to them have rated highly. 
 
 The **advantage** of this model is as follows:
 * Easy to understand
