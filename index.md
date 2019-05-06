@@ -16,7 +16,7 @@ There are two broad approaches to generate recommendations:
 
 ### Collaborative Filtering
 
-In order to perform collaborative filtering, one needs to create a **utility matrix** [[4](http://infolab.stanford.edu/~ullman/mmds/ch9.pdf)]. These rows of this utility matrix correspond to users, and the columns correspond to products. Each entry in the matrix is the rating (1-5, both inclusive) given to a product by a user. For example, let us say we have 6 products: P1 through P6, and 5 users: U1 through U5. Since all users do not rate all products, the utility matrix ends up being quite sparse. The corresponding utility matrix looks as follows: 
+In order to perform collaborative filtering, one needs to create a **utility matrix** [1]. These rows of this utility matrix correspond to users, and the columns correspond to products. Each entry in the matrix is the rating (1-5, both inclusive) given to a product by a user. For example, let us say we have 6 products: P1 through P6, and 5 users: U1 through U5. Since all users do not rate all products, the utility matrix ends up being quite sparse. The corresponding utility matrix looks as follows: 
 
 |    | P1 | P2 | P3 | P4 | P5 | P6 |
 |:---|:---|:---|:---|:---|:---|:---|
@@ -40,7 +40,7 @@ In order to compute similarity scores and generate predictions, we rely on a lot
 
 ## Data
 
-The raw dataset that we use for this project is the "Amazon Product Data" that was collected by Julian McAuley et al. from University of California, San Diego (UCSD) [1]. We came across this dataset because it was used extensively in machine learning applications such as [2]. This dataset contains 142.8 million product reviews, as well as the associated metadata from Amazon spanning May 1996 to July 2014. Therefore, the size of this dataset is considerable (over 100 GB), and it is not practical to fit all the data on a single machine and to make useful recommendations. A sample review of this dataset is as follows:
+The raw dataset that we use for this project is the "Amazon Product Data" that was collected by Julian McAuley et al. from University of California, San Diego (UCSD) [2]. We came across this dataset because it was used extensively in machine learning applications such as [3]. This dataset contains 142.8 million product reviews, as well as the associated metadata from Amazon spanning May 1996 to July 2014. Therefore, the size of this dataset is considerable (over 100 GB), and it is not practical to fit all the data on a single machine and to make useful recommendations. A sample review of this dataset is as follows:
 ```
 {
   "reviewerID": "A2SUAM1J3GNN3B",
@@ -393,12 +393,14 @@ Some next steps that we could take are listed below:
 * * *
 
 # References
-[1] Ups and downs: Modeling the visual evolution of fashion trends with one-class collaborative filtering
+[1] http://infolab.stanford.edu/~ullman/mmds/ch9.pdf
+
+[2] Ups and downs: Modeling the visual evolution of fashion trends with one-class collaborative filtering
 R. He, J. McAuley WWW, 2016
 
-[2] Alec Radford, Rafal Jozefowicz, and Ilya Sutskever. 2017. Learning to generate reviews and discovering sentiment. CoRR, abs/1704.01444.
+[3] Alec Radford, Rafal Jozefowicz, and Ilya Sutskever. 2017. Learning to generate reviews and discovering sentiment. CoRR, abs/1704.01444.
 
-[3] Alternative Least Square
+[4] Alternative Least Square
 
 [5] Stanford ALS paper
 
