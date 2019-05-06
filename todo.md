@@ -1,7 +1,7 @@
 Website
 
-1. Hyperlink to sections at the top [YL]
-2. Complete step-by-step instructions [AV]
+1. ~Hyperlink to sections at the top [ZW]~
+2. ~Complete step-by-step instructions [AV]~
 3. Matplotlib plots [AV]
 4. References [ZW]
 5. ~Emphasize the usage of OpenMP [ZW]~
@@ -13,8 +13,8 @@ Website
 11. Add screenshots [ZJ, AV]
 12. Add tests on the web page [ZW]
 13. Update the need for big data and big compute [AV]
-14. Add advanced feature - neural network and references  
-15. Optimizations 
+14. ~Add advanced feature - neural network and references~  
+15. Optimizations  
 16. Test out instruction steps [YL]
 
 Poster
