@@ -351,11 +351,12 @@ Discussion about advanced features here
 
 # Discussion
 
-In this project, we designed, implemented and tested the distributed recommendation system for over 100 GB data from Amazon. We first identified the need for big compute and big data, and based on these needs we decided to use Spark and OpenMP as our basic infrastructure and platform. We then identified the main overhead in our application is the data loading process. To mitigate this overhead, we tried both cache and adjustment of executor memory and it turned out that adjustment of executor memory is a more effective approach. We then tested our application on a variety of data sizes (scalability, throughput), number of threads, number of nodes (speedup). 
+In this project, we designed, implemented and tested the distributed recommendation system for around 100 GB data from Amazon. We first identified the need for big compute and big data, and based on these needs we decided to use Spark and OpenMP as our basic infrastructure and platform. We then identified the main overhead in our application is the data loading process. To mitigate this overhead, we tried both cache and adjustment of executor memory and it turned out that adjustment of executor memory is a more effective approach. We then tested our application on a variety of data sizes (scalability, throughput), number of threads, number of nodes (speedup). 
 
 ## Goals Achieved
 
 For this application, we have achieved following goals:
+
 * **Overall**: We have successfully built a **distributed recommendation system based on Spark and OpenMP**, which is able to intelligently recommend costumers with new products, based on his and other customers' purchasing history.
 * **Accuracy**: We have tested the prediction accuracy both for ALS and our advanced feature (densely connected neural network). The Mean Absolute Error for ALS is 0.50775 and for the neural network is 0.29846. This is very accurate given that ratings given by users on Amazon ranges from 1 to 5 inclusively.
 * **Speedup**: As shown in the "Performance Evaluation" section above, our application is able to achieve a speedup of **1.34**, when running with 16 threads on each node on a 8-node AWS c5.9xlarge-based cluster.
@@ -365,31 +366,42 @@ For this application, we have achieved following goals:
 ## Improvements Suggested
 
 In retrospect, some improvements that could be done include:
+
 * Implement our application on GPU instances to facilitate larger parallelism
 * Implement distributed neural network
 * Implement online recommendation system using streaming data 
 
-## Interesting Insights
+## Interesting Insights and Lessons Learnt
 
-Interesting insights here
+Some of the important lessons that we learnt and insights that we gathered through this project are:
 
-## Lessons Learnt
-
-Lessons learnt here
+* Dealing with large datasets (>10 GB) is a completely different challenge than dealing with datasets that we have typically dealt with (<1 GB). Our initial solution involved creating a few temporary dataframes and tables in Spark and this solution worked extremely well for a toy dataset, however created severel memory issues when applied to a larger dataset as these temporary dataframes were each on the order of a few gigabytes. Therefore, we had to be extremely careful about how to deal with intermediate results and avoided the creation of temporary dataframes and tables as far as possible.
+* If we were actually employees of Amazon working on building a distributed recommendation system using AWS, we would have to pay more attention to the costs and benefits of different cluster configurations. We wanted to use at least 8 nodes and wanted each node to have at least 16 vCPUs in order to demonstrate the benefits of our hybrid architecture, however we did not factor in the cost of running each node and instance into our final cluster architecture since we only ran experiments for a limited time. Running a cluster for a long period of time would necessitate an analysis of the cost vs performance of different number of nodes and different instance types.
+* It is extremely important to keep the codebase for a project such as this as simple as possible. This makes it possible to easily profile different sections of code, understand where speedup is possible, and be able to debug. Therefore, since we were creating a codebase from scratch, our emphasis was to make this codebase not overly complex.
+* Downloading the dataset on the cluster for a dataset this size was manageable, but time consuming. For a dataset 1000x larger than this, which is not an unreasonable size given the number of customers and products at Amazon, this is not a scalable solution. In order to do this better for a much larger dataset, one could either use specific, network-optimized instances from AWS. 
 
 ## Future Work
 
-Future work here
+Some next steps that we could take are listed below:
+
+* This work acts as a promising starting point to carry out online recommendations using real-time streaming data. Amazon users often buy and browse through products daily, and having to compute batch recommendations frequently using the full dataset can be extremely expensive. 
+* Having said the above, we recognize that we used only a subset of Amazon's total data and we would like to extend our project to a much larger (multi-TB) dataset. We were successfully able to translate our methodology from a dataset on the order of megabytes to a dataset around 100GB in size and understood many of the non-trivial challenges that are involved in this shift, and believe that the logical next step is to further increase dataset size and repeat the experiment.
+* We predominantly used Alternating Least Squares (ALS), however there are several algorithms used in recommendation systems. We would like to extend our study to comparing between numerous different algorithms for creating recommendations for different-sized datasets in order to determine the optimal algorithm for a dataset of a given size.
 
 * * *
 
 # References
 [1] Ups and downs: Modeling the visual evolution of fashion trends with one-class collaborative filtering
-R. He, J. McAuley
-WWW, 2016
+R. He, J. McAuley WWW, 2016
+
 [2] Alec Radford, Rafal Jozefowicz, and Ilya Sutskever. 2017. Learning to generate reviews and discovering sentiment. CoRR, abs/1704.01444.
+
 [3] Alternative Least Square
+
 [5] Stanford ALS paper
+
 [6]https://markus-beuckelmann.de/blog/boosting-numpy-blas.html
+
 [7]https://software.intel.com/en-us/distribution-for-python
+
 [8]https://software.intel.com/en-us/articles/intel-math-kernel-library-intel-mkl-using-intel-mkl-with-threaded-applications#3
