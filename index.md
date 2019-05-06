@@ -300,7 +300,7 @@ Third, to test for weak scalability, we run our code using different problem siz
 |  Dataset Name | Dataset Size (GB)  | Execution Time (s) |
 |:--:|:--:|:--:|
 | Music |   | 17 |  
-| Movies and TV | 19 |  ? | 
+| Movies and TV | ? | 19 | 
 | Kindle |  ? |  19 | 
 | Books |  ? |  26 | 
 | Full Dataset | ? | 216 |
