@@ -319,18 +319,15 @@ Second, we vary the number of threads per node (executor) on our cluster. The nu
 | 8  | 216 | 1.31 | --num-executors 8 --executor-cores 16 --driver-memory 8g --executor-memory 4g |
 | 16 | 210 | 1.34 | --num-executors 8 --executor-cores 16 --driver-memory 8g --executor-memory 4g |
 
-Third, to test for weak and strong scalability, we run our code using different problem sizes. This is reflected by the size (in gigabytes) of the dataset we use. We use 8 nodes and 8 threads and carry out caching on memory and RDD.
+Third, to test for weak scalability, we run our code using different problem sizes. This is reflected by the size (in gigabytes) of the dataset we use. We use 8 nodes and 8 threads and carry out caching on memory and RDD.
 
-|  Dataset Size (GB)  | Execution Time (s) | Speedup | 
+|  Dataset Name | Dataset Size (GB)  | Execution Time (s) |
 |:--:|:--:|:--:|
-| 1 |  3 |  ? |  
-| 2 |  1 |  ? | 
-| 4 |  ? |  ? | 
-| 8 |  ? |  5 | 
-
-A plot illustrating speedup is shown below.
-
-[PLOT]
+| Music |   | 17 |  
+| Movies and TV | 19 |  ? | 
+| Kindle |  ? |  19 | 
+| Books |  ? |  26 | 
+| Full Dataset | ? | 216 |
 
 ## Optimizations and Overheads
 
@@ -351,8 +348,7 @@ Assume we have user i and product p. The naive Alternating Least Squares method 
 
 ### Result
 
-The baseline dot product using our recommendation_als.py on Kindle dataset with hidden dimension = 20 and iteration = 15 has a mean absolute error of 0.50775 
-The nerual network on the same setting yields a mean absolute error of 0.29846. 
+The baseline dot product using our recommendation_als.py on Kindle dataset with hidden dimension = 20 and iteration = 15 has a mean absolute error of 0.50775. The nerual network on the same setting yields a mean absolute error of 0.29846. 
 
 * * *
 
