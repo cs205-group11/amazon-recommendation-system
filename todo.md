@@ -8,7 +8,6 @@ Website
 
 Others
 
-1. Link code repo on the website [AV]
-2. Make README page on code repo using our website repo [AV]
+q. Make README page on code repo using our website repo [AV]
 3. Add slides [YL]
 4. Other figures on the website [YL]
