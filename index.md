@@ -301,7 +301,7 @@ Third, to test for weak scalability, we run our code using different problem siz
 | Kindle | 0.30 |  19 | 
 | Movies and TV | 0.68 | 19 | 
 | Books | 3 |  26 | 
-| Full Dataset | 17.7 | 216 |
+| Aggregated Dataset | 17.7 | 216 |
 
 ## Optimizations and Overheads
 
