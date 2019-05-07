@@ -165,13 +165,7 @@ In this project, we have used a number of platforms and infrastructures covered 
 
 Discuss Software design here
 
-```
-Long, single-line code blocks should not wrap. They should horizontally scroll if they are too long. This line should be long enough to demonstrate this.
-```
-
-```
-The final element.
-```
+You should mention software design, code baseline, dependencies
 
 Our entire source code can be found in our [github repository](https://github.com/JinZhaoHong/cs205_amazon_recommendation).
 
