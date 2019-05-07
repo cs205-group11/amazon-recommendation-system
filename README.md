@@ -1,5 +1,10 @@
 ## Parallel Implementation of a Recommendation System for Amazon
+
 CS205 Final Project: Zhaohong Jin, Zheyu Wu, Abhimanyu Vasishth, Yuhao Lu (Group 11)
+
+[Project Website](https://cs205-group11.github.io/amazon-recommendation-system/) | [Source Code](https://github.com/JinZhaoHong/cs205_amazon_recommendation)
+
+***
 
 The goal of this project is to parallelize the process of generating product recommendations to Amazon's users. Specifically, we aim to predict, as accurately as possible, the rating a user gives to a particular product. If we are able to make accurate predictions, we can recommend products to users that they have not bought yet. 
 
