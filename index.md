@@ -172,6 +172,7 @@ Our entire source code can be found in our [github repository](https://github.co
 For our recommendation system, everything from reading the data to processing the data to generating the results uses Spark dataframe and Spark RDD. Package wise, we use Spark and Intel's distribution of Python + NumPy(with OpenMP support on the backend). The workflow of the software design is shown in the below graph.
 
 
+![alt text](./fig/software_design.png)
 
 ## How to Use our Code
 
