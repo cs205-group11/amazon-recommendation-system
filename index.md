@@ -272,6 +272,14 @@ To run the test, simply follow the usage guide above from step 2 to start downlo
 
 # Results
 
+## Rating Predictions and Recommendation
+
+As a final result of our recommendation algorithm, we give user recommendation of products based on their previous ratings.
+Attached is a sample output of the algorithm: 
+
+![alt text](./fig/results.png)
+
+
 ## Performance Evaluation
 
 First, we vary the number of nodes (executors) on our cluster. The number of threads in each case was 8. We also utilized caching on memory and RDD.
