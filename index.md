@@ -100,7 +100,7 @@ In light of above two limitations of SCF, matrix factorization is a more advance
 
 To factorize a matrix, single value decomposition is a common technique, where a matrix *R* can be decomposed of matrices *X, Σ, Y*, where *Σ* is a matrix containing singular values of the original matrix. However, given that R is a sparse matrix, we can find matrices *X* and *Y* directly, with the goal that the product of *X* and *Y* is an approximation of the original matrix *R*. 
 
-Therefore, this problem is turned into an optimization problem to find *X* and *Y*, whose product is a good approximation of *R*. One way to numerically compute this is Alternative Least Square (ALS) [3], where either the user factor matrix or item factor matrix is held constant in turn, and update the other matrix. Once we obtain X and Y, the predicted rating matrix can be simply found by the matrix multiplication of X and Y.
+Therefore, this problem is turned into an optimization problem to find *X* and *Y*, whose product is a good approximation of *R*. One way to numerically compute this is Alternative Least Square (ALS) [4], where either the user factor matrix or item factor matrix is held constant in turn, and update the other matrix. Once we obtain X and Y, the predicted rating matrix can be simply found by the matrix multiplication of X and Y.
 
 ## Parallel Application and Programming Model
 
@@ -386,16 +386,13 @@ Some next steps that we could take are listed below:
 * * *
 
 # References
-[1] http://infolab.stanford.edu/~ullman/mmds/ch9.pdf
+[1] Jeffrey D. Ullman, "Mining Massive Datasets: Recommendation Systems"[Online]. Accessed May 6th, 2019. Available: http://infolab.stanford.edu/~ullman/mmds/ch9.pdf
 
-[2] Ups and downs: Modeling the visual evolution of fashion trends with one-class collaborative filtering
-R. He, J. McAuley WWW, 2016
+[2] R. He, J. McAuley WWW, "Ups and downs: Modeling the visual evolution of fashion trends with one-class collaborative filtering", Accessed May 6th, 2019. Available: https://arxiv.org/abs/1602.01585
 
-[3] Alec Radford, Rafal Jozefowicz, and Ilya Sutskever. 2017. Learning to generate reviews and discovering sentiment. CoRR, abs/1704.01444.
+[3] Alec Radford, Rafal Jozefowicz, and Ilya Sutskever. "Learning to generate reviews and discovering sentiment". Accessed May 6th, 2019. CoRR, abs/1704.01444.
 
-[4] Alternative Least Square
-
-[5] Stanford ALS paper
+[4] Haoming Li, Bangzheng He, Michael Lublin, Yonathan Perez, "Matrix Completion via Alternating Least Square(ALS)" [Online]. Accessed May 6th, 2019. Available: http://stanford.edu/~rezab/classes/cme323/S15/notes/lec14.pdf
 
 [6]https://markus-beuckelmann.de/blog/boosting-numpy-blas.html
 
