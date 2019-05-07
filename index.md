@@ -1,4 +1,7 @@
-# Group 11
+# Contents
+{:.no_toc}
+*  
+{: toc}
 
 # Introduction
 
@@ -132,7 +135,7 @@ Here,
 
 **Parallelism**: Since calculating the cosine similarity between every pair of user is independent, we can therefore use OpenMP to parallelize the algorithm. Further, we have distributed the workload across different nodes using Spark to increase model performance.
 
-For ALS, we are using the following algorithm [5] to iteratively find latent matrix X and Y:
+For ALS, we are using the following algorithm [4] to iteratively find latent matrix X and Y:
 
 ![alt text](./fig/als.png)
 
@@ -158,7 +161,7 @@ To summarize, the overall programming model is as follows:
 In this project, we have used a number of platforms and infrastructures covered in the lecture. The following flowchart illustrates the platform that we are using.
 ![alt text](./fig/infra.png)
 
-*Note on the usage of OpenMP*: By default, Python is subject to Global Interpreter Lock (GIL), which prevents more than one threads to run at a time. However, the underlying libraries of `Numpy` and `SciPy`  are written in C, making it possible for multithreading optimization. For linear algebra related applications, the underlying library is BLAS, and it includes some variants such as OpenBLAS, Intel MKL and ATLAS. A benchmark regarding their performance can be found here [6]. For our application, we decided to use Intel MKL, since it provides the highest speedup among all BLAS variants. Intel MKL is now packaged within Intel Distribution for Python [7], which is used in our application (see "How to Use our Code" section below). By using Intel Distribution for Python, we can achieve OpenMP's multithreading performance, and yet enjoy the simplicity of Python [8]. In other words, thanks to Intel's Distribution for Python, all Numpy-related code is automatically optimized through OpenMP, and we can control the number of threads in the same way as a C program: ```export OMP_NUM_THREADS=<number of threads to use>```
+*Note on the usage of OpenMP*: By default, Python is subject to Global Interpreter Lock (GIL), which prevents more than one threads to run at a time. However, the underlying libraries of `Numpy` and `SciPy`  are written in C, making it possible for multithreading optimization. For linear algebra related applications, the underlying library is BLAS, and it includes some variants such as OpenBLAS, Intel MKL and ATLAS. A benchmark regarding their performance can be found here [5]. For our application, we decided to use Intel MKL, since it provides the highest speedup among all BLAS variants. Intel MKL is now packaged within Intel Distribution for Python [7], which is used in our application (see "How to Use our Code" section below). By using Intel Distribution for Python, we can achieve OpenMP's multithreading performance, and yet enjoy the simplicity of Python [8]. In other words, thanks to Intel's Distribution for Python, all Numpy-related code is automatically optimized through OpenMP, and we can control the number of threads in the same way as a C program: ```export OMP_NUM_THREADS=<number of threads to use>```
 * * *
 
 # Usage Instructions
@@ -387,12 +390,12 @@ Some next steps that we could take are listed below:
 
 [2] R. He, J. McAuley WWW, "Ups and downs: Modeling the visual evolution of fashion trends with one-class collaborative filtering", Accessed May 6th, 2019. Available: https://arxiv.org/abs/1602.01585
 
-[3] Alec Radford, Rafal Jozefowicz, and Ilya Sutskever. "Learning to generate reviews and discovering sentiment". Accessed May 6th, 2019. CoRR, abs/1704.01444.
+[3] Alec Radford, Rafal Jozefowicz, and Ilya Sutskever, "Learning to generate reviews and discovering sentiment". Accessed May 6th, 2019. CoRR, abs/1704.01444.
 
 [4] Haoming Li, Bangzheng He, Michael Lublin, Yonathan Perez, "Matrix Completion via Alternating Least Square(ALS)" [Online]. Accessed May 6th, 2019. Available: http://stanford.edu/~rezab/classes/cme323/S15/notes/lec14.pdf
 
-[6]https://markus-beuckelmann.de/blog/boosting-numpy-blas.html
+[5] Markus Beuckelmann, "Boosting Numpy: Why BLAS matters"[Online]. Accessed May 6th, 2019. Available: https://markus-beuckelmann.de/blog/boosting-numpy-blas.html
 
-[7]https://software.intel.com/en-us/distribution-for-python
+[6]https://software.intel.com/en-us/distribution-for-python
 
-[8]https://software.intel.com/en-us/articles/intel-math-kernel-library-intel-mkl-using-intel-mkl-with-threaded-applications#3
+[7]https://software.intel.com/en-us/articles/intel-math-kernel-library-intel-mkl-using-intel-mkl-with-threaded-applications#3
