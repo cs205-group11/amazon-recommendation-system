@@ -282,10 +282,10 @@ Attached is a sample output of the algorithm:
 If we pick some of the top rated asins, for example, B00LU9GTSC, B00LUCO52G, B00LYLHUNE, and B00M13FNSS, we see that our recommendation is pretty accurate. This user is particular interested in reading romantic novels.
 
 <p float="left">
-  <img src="./fig/B00LU9GTSC.png" width="300" />
-  <img src="./fig/B00LUCO52G.png" width="300" /> 
-  <img src="./fig/B00LYLHUNE.png" width="300" />
-  <img src="./fig/B00M13FNSS.png" width="300" />
+  <img src="./fig/B00LU9GTSC.png" width="200" />
+  <img src="./fig/B00LUCO52G.png" width="200" /> 
+  <img src="./fig/B00LYLHUNE.png" width="200" />
+  <img src="./fig/B00M13FNSS.png" width="200" />
 </p>
 
 
