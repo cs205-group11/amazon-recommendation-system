@@ -56,7 +56,7 @@ In addition, we have another advanced recommendation system based on Neural Netw
 
 ### Model Setup
 
-To begin with, we can assume that we have a *n* × *m* **utility matrix** [1] matrix, where *n* represents the number of user and *m* represents the number of products (i.e. the utility matrix shown above). Each entry in this matrix *r<sub>ij</sub>* is the rating given by user *i* to product *j*. For example, let us say we have 6 products: P1 through P6, and 5 users: U1 through U5. Since all users do not rate all products, the utility matrix ends up being quite sparse. The corresponding utility matrix looks as follows: 
+To begin with, we can assume that we have a *n* × *m* **utility matrix** [1], where *n* represents the number of user and *m* represents the number of products. Each entry in this matrix *r<sub>ij</sub>* is the rating given by user *i* to product *j*. For example, let us say we have 6 products: P1 through P6, and 5 users: U1 through U5. Since all users do not rate all products, the utility matrix ends up being quite sparse. The corresponding utility matrix looks as follows: 
 
 |    | P1 | P2 | P3 | P4 | P5 | P6 |
 |:---|:---|:---|:---|:---|:---|:---|
