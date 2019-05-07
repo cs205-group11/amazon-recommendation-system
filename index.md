@@ -263,7 +263,9 @@ hadoop fs -rm -r X
 
 ## How to Run Tests
 
-How to run tests
+In this project, we have conducted a series of tests to validate our recommendation system. We looked into a variety of Amazon shopping histories for products in Music, Kindle, Books as well as Movies and TV. These dataset are of different sizes, and can be found [here](http://jmcauley.ucsd.edu/data/amazon/). 
+
+To run the test, simply follow the usage guide above from step 2 to start downloading corresponding "5-core" data from the link provided above. Perform all the following similar steps to run the test. The result of these test can be found in the "Results" section below.
 
 * * *
 
