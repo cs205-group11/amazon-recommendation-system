@@ -1,7 +1,4 @@
-# Contents
-{:.no_toc}
-*  
-{: toc}
+# Group 11
 
 # Introduction
 
