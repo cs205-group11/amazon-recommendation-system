@@ -331,6 +331,7 @@ The baseline dot product using our recommendation_als.py on Kindle dataset with 
 
 ## Intel Python Library with Advanced Optimization
 
+We chose Intel Distribution for Python https://software.intel.com/en-us/distribution-for-python to do all our experiments. This distribution gives us faster Python performance for packages such as NumPy, SciPy and scikit-learn. For the NumPy package, Intel's python distribution allows us to access the latest vectorization and multithreading instructions based on OpenMP framework. Our code relies on a lot of matrix/vector multiplications, so using this distribution is ideal to improve our performance. Our test run (on the full 18 gb dataset, with Alternating Least Squares) shows a 20 seconds improvement on average.  
 
 
 ## Other Optimizations: Caching and Executor Memory Tuning
