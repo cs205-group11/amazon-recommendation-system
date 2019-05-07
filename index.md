@@ -169,6 +169,10 @@ You should mention software design, code baseline, dependencies
 
 Our entire source code can be found in our [github repository](https://github.com/JinZhaoHong/cs205_amazon_recommendation).
 
+For our recommendation system, everything from reading the data to processing the data to generating the results uses Spark dataframe and Spark RDD. Package wise, we use Spark and Intel's distribution of Python + NumPy(with OpenMP support on the backend). The workflow of the software design is shown in the below graph.
+
+
+
 ## How to Use our Code
 
 To get started, follow [Guide: First Access to AWS](https://docs.google.com/document/d/1pbawfF3BNtT4iviQ5ZcMwNi9DNxjcZCqIQxcN1afV8I/edit) to create an AWS account and key pairs for remote log in.
