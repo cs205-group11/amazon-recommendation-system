@@ -295,7 +295,7 @@ Second, we vary the number of threads per node (executor) on our cluster. The nu
 
 Third, to test for weak scalability, we run our code using different problem sizes. This is reflected by the size (in gigabytes) of the dataset we use. We use 8 nodes and 8 threads and carry out caching on memory and RDD. **Note**: the sizes are given for the zipped files. The unzipped files are ~4x larger.
 
-|  Dataset Name | Dataset Size (GB)  | Execution Time (s) |
+|  Dataset Name | Zipped Dataset Size (GB)  | Execution Time (s) |
 |:--:|:--:|:--:|
 | Music | 0.03 | 17 | 
 | Kindle | 0.30 |  19 | 
