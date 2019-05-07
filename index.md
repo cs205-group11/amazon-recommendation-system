@@ -265,6 +265,8 @@ hadoop fs -rm -r X
 
 In this project, we have conducted a series of tests to validate our recommendation system. We looked into a variety of Amazon shopping histories for products in Music, Kindle, Books as well as Movies and TV. These dataset are of different sizes, and can be found [here](http://jmcauley.ucsd.edu/data/amazon/). 
 
+![alt text](./fig/how_to_run_test.png)
+
 To run the test, simply follow the usage guide above from step 2 to start downloading corresponding "5-core" data from the link provided above. Perform all the following similar steps to run the test. The result of these test can be found in the "Results" section below.
 
 * * *
@@ -304,10 +306,10 @@ Third, to test for weak scalability, we run our code using different problem siz
 
 |  Dataset Name | Zipped Dataset Size (GB)  | Execution Time (s) |
 |:--:|:--:|:--:|
-| Music | 0.03 | 17 | 
-| Kindle | 0.30 |  19 | 
-| Movies and TV | 0.68 | 19 | 
-| Books | 3 |  26 | 
+| Music | 0.03 | 17 |
+| Kindle | 0.30 |  19 |
+| Movies and TV | 0.68 | 19 |
+| Books | 3 |  26 |
 | Aggregated Dataset | 17.7 | 216 |
 
 ## Optimizations and Overheads
