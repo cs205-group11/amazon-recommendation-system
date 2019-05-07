@@ -173,6 +173,8 @@ Long, single-line code blocks should not wrap. They should horizontally scroll i
 The final element.
 ```
 
+Our entire source code can be found in our [github repository](https://github.com/JinZhaoHong/cs205_amazon_recommendation).
+
 ## How to Use our Code
 
 To get started, follow [Guide: First Access to AWS](https://docs.google.com/document/d/1pbawfF3BNtT4iviQ5ZcMwNi9DNxjcZCqIQxcN1afV8I/edit) to create an AWS account and key pairs for remote log in.
