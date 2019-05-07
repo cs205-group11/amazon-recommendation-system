@@ -205,21 +205,23 @@ To get started, follow [Guide: First Access to AWS](https://docs.google.com/docu
 4. `ssh` into the all nodes (including master and all worker nodes). Follow [this instruction](https://software.intel.com/en-us/distribution-for-python/choose-download/linux) to download and install Intel Distribution for Python for **all nodes**. This version of Python is built upon Intel Math Kernel Library(MKL) and it outperforms the original version of Python in numerical calculations since they are optimized on Intel processors. 
 
 5. Download the rating dataset. It may take a while (~40 mins) to complete this process depending on your network bandwidth.
+
 ```
 wget http://snap.stanford.edu/data/amazon/productGraph/aggressive_dedup.json.gz
 
 wget http://snap.stanford.edu/data/amazon/productGraph/reviews_Kindle_Store_5.json.gz
 
 wget http://snap.stanford.edu/data/amazon/productGraph/reviews_Books_5.json.gz
-
 ```
 
 6. Extract the rating data using `gzip`.
+
 ```
 gzip -d aggressive_dedup.json.gz
 ```
 
 7. Move the rating data into the hadoop file system.
+
 ```
 hadoop fs -put aggressive_dedup.json
 ```
