@@ -3,7 +3,7 @@ Website
 1. ~Hyperlink to sections at the top [ZW]~
 2. ~Complete step-by-step instructions [AV]~
 3. ~Matplotlib plots [AV]~
-4. References [ZW]
+4. ~References [ZW]~
 5. ~Emphasize the usage of OpenMP [ZW]~
 6. ~Discussion - goals achieved [ZW]~
 7. ~Discussion - improvements suggested [ZW]~
