@@ -274,8 +274,7 @@ To run the test, simply follow the usage guide above from step 2 to start downlo
 
 ## Rating Predictions and Recommendation
 
-As a final result of our recommendation algorithm, we give user recommendation of products based on their previous ratings.
-Attached is a sample output of the algorithm: 
+As a final result of our recommendation algorithm, we give user recommendation of products based on their previous ratings. For our sample output, we uses alternating least square algorithm on the Kindle dataset to recommend books for reviewers (982,619 reviews). For each user, we predict the ratings of all books. Attached is a sample output on one of our selected reviewer and some of our predicted ratings (the overall column).
 
 ![alt text](./fig/results.png)
 
@@ -330,6 +329,7 @@ Third, to test for weak scalability, we run our code using different problem siz
 
 ## Optimizations and Overheads
 
+The single largest overhead of our algorithms is the dataloading process. For our largest dataset(17.7 gb), this could take over 160 seconds. To tackle this, we design our algorithm as a one pass process. We generate all our predictions and latent vectors all at once. This reduces the need to process the dataset to the minimum. In addition, in Spark operations, we limit the number of time we have to call SortByKey, ReduceByKey, or other similiar operations that will cause the scheduler to sort the entire dataset or reshuffle the data
 Discussion about overheads and optimizations done
 
 * * *
