@@ -93,9 +93,9 @@ In light of above two limitations of SCF, matrix factorization is a more advance
 
 ![alt text](./fig/matrix_decomposition.png)
 
-To factorize a matrix, single value decomposition is a common technique, where a matrix *R* can be decomposed of matrices *X, Σ, Y*, where *Σ* is a matrix containing singular values of the original matrix. However, given that R is a sparse matrix, we can find matrices *X* and *Y* directly, with the goal that the product of *X* and *Y* is an approximation of the original matrix *R*. 
+To factorize a matrix, single value decomposition is a common technique, where a matrix *R* can be decomposed of matrices *X, Σ, Y*, where *Σ* is a matrix containing singular values of the original matrix. However, given that R is a sparse matrix, we can find matrices *X* and *Y* directly, with the goal that the product of *X* and *Y* is an approximation of the original matrix *R* (as shown above). 
 
-Therefore, this problem is turned into an optimization problem to find *X* and *Y*, whose product is a good approximation of *R*. One way to numerically compute this is Alternative Least Square (ALS) [4], where either the user factor matrix or item factor matrix is held constant in turn, and update the other matrix. Once we obtain X and Y, the predicted rating matrix can be simply found by the matrix multiplication of X and Y.
+Therefore, this problem is turned into an optimization problem to find *X* and *Y*. One way to numerically compute this is Alternative Least Square (ALS) [4], where either the user factor matrix or item factor matrix is held constant in turn, and update the other matrix. Once we obtain X and Y, the predicted rating matrix can be simply found by the matrix multiplication of X and Y.
 
 ## Parallel Application and Programming Model
 
