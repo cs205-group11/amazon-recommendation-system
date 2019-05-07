@@ -2,7 +2,7 @@ Website
 
 1. ~Hyperlink to sections at the top [ZW]~
 2. ~Complete step-by-step instructions [AV]~
-3. Matplotlib plots [AV]
+3. ~Matplotlib plots [AV]~
 4. References [ZW]
 5. ~Emphasize the usage of OpenMP [ZW]~
 6. ~Discussion - goals achieved [ZW]~
@@ -15,7 +15,6 @@ Website
 13. Update the need for big data and big compute [AV]
 14. ~Add advanced feature - neural network and references~  
 15. Optimizations  
-16. Test out instruction steps [YL]
 
 Poster
 
@@ -24,7 +23,7 @@ Poster
 3. ~Add background and motivation figures and equations [ZW]~
 4. ~Add conclusion and future work [AV]~
 5. ~Add references [ZW]~
-6. Add results and plots.
+6. ~Add results and plots.~
 
 Others
 
