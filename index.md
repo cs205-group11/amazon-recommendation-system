@@ -325,6 +325,7 @@ If we pick some of the top rated asins, for example, B00LU9GTSC, B00LUCO52G, B00
 
 Baseline sequential code (`als_recommendation_sequential.py`) on 1 node 1 thread takes 288 seconds.
 
+**Strong Scaling**
 First, we vary the number of nodes (executors) on our cluster. The number of threads in each case was 8. We also utilized caching on memory and RDD. This table shows that an increase in number of cores does not decrease the execution time by too much. We anticipate that this is due to the data loading overhead (see "Optimizations and Overheads" section below). Since this overhead takes too long, the additional computation capacity brought by cores is not significant.
 
 |  Nodes  | Execution Time (s) | Speedup | Flags
@@ -351,6 +352,8 @@ Second, we vary the number of threads per node (executor) on our cluster. The nu
 A plot of execution times is given below: 
 
 ![alt text](./fig/cores_per_node.png)
+
+**Weak Scaling**
 
 Third, to test for weak scalability, we run our code using different problem sizes. This is reflected by the size (in gigabytes) of the dataset we use. We use 8 nodes and 8 threads and carry out caching on memory and RDD. **Note**: the sizes are given for the zipped files. The unzipped files are ~4x larger.
 
