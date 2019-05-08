@@ -373,13 +373,13 @@ A plot of execution times is given below:
 
 Third, to test for weak scalability, we run our code using different problem sizes. This is reflected by the size (in gigabytes) of the dataset we use. We use 8 nodes and 8 threads and carry out caching on memory and RDD. **Note**: the sizes are given for the zipped files. The unzipped files are ~4x larger.
 
-|  Dataset Name | Zipped Dataset Size (GB)  | Execution Time (s) |
-|:--:|:--:|:--:|
-| Music | 0.03 | 17 |
-| Kindle | 0.30 |  19 |
-| Movies and TV | 0.68 | 19 |
-| Books | 3 |  26 |
-| Aggregated Dataset | 17.7 | 216 |
+|  Dataset Name | Zipped Dataset Size (GB)  | Execution Time (s) | Throughput (GB/s)
+|:--:|:--:|:--:|:--:|
+| Music | 0.03 | 17 | 0.00176 |
+| Kindle | 0.30 |  19 | 0.01579  |
+| Movies and TV | 0.68 | 19 | 0.03579  |
+| Books | 3 |  26 |  0.11538  |
+| Aggregated Dataset | 17.7 | 216 | 0.08194  |
 
 ## Optimizations and Overheads
 
