@@ -139,6 +139,7 @@ To summarize, the overall programming model is as follows:
 In this project, we have used a number of platforms and infrastructures covered in the lecture. The following flowchart illustrates the platform that we are using.
 ![alt text](./fig/infra.png)
 
+*Note on the usage of OpenMP*: By default, Python is subject to Global Interpreter Lock (GIL), which prevents more than one threads to run at a time. However, the underlying libraries of `Numpy` and `SciPy`  are written in C, making it possible for multithreading optimization. For linear algebra related applications, the underlying library is BLAS, and it includes some variants such as OpenBLAS, Intel MKL and ATLAS. A benchmark regarding their performance can be found [here](https://markus-beuckelmann.de/blog/boosting-numpy-blas.html) [5]. For our application, we decided to use Intel MKL, since it provides the highest speedup among all BLAS variants. Intel MKL is now packaged within Intel Distribution for Python [6], which is used in our application (see "How to Use our Code" section below). By using Intel Distribution for Python, we can achieve OpenMP's multithreading performance, and yet enjoy the simplicity of Python [7]. In other words, thanks to Intel's Distribution for Python, all Numpy-related code is automatically optimized through OpenMP, and we can control the number of threads in the same way as a C program: ```export OMP_NUM_THREADS=<number of threads to use>```
 * * *
 
 # Usage Instructions
