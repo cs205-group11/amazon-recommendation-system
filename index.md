@@ -170,6 +170,18 @@ Our entire source code can be found in our [github repository](https://github.co
 
 For our recommendation system, everything from reading the data to processing the data to generating the results uses Spark dataframe and Spark RDD. Package wise, we use Spark and Intel's distribution of Python + NumPy(with OpenMP support on the backend). The workflow of the software design is shown in the below graph.
 
+### Code baseline
+
+The sequential code is running with one node and one thread. This is achieved through using Spark local mode. The sequential file is called als_recommendation_sequential.py, and the instruction to run it on a single node of c5.9xlarge instance is 
+
+```
+spark-submit --driver-memory 20g --executor-memory 40g  als_recommendation_sequential.py aggressive_dedup.json
+```
+
+See the below section for how to prepare the dataset and the cluster.
+
+The time it takes for the sequential code is 288 seconds.
+
 
 ![alt text](./fig/software_design.png)
 
@@ -329,6 +341,8 @@ If we pick some of the top rated asins, for example, B00LU9GTSC, B00LUCO52G, B00
 
 
 ## Performance Evaluation
+
+Baseline sequential code (als_recommendation_sequential.py) on 1 node 1 thread takes 288 seconds.
 
 First, we vary the number of nodes (executors) on our cluster. The number of threads in each case was 8. We also utilized caching on memory and RDD.
 
