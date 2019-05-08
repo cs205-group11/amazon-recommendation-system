@@ -428,7 +428,7 @@ For this application, we have achieved following goals:
 * **Overall**: We have successfully built a **distributed recommendation system based on Spark and OpenMP**, which is able to intelligently recommend costumers with new products, based on his and other customers' purchasing history.
 * **Accuracy**: We have tested the prediction accuracy both for ALS and our advanced feature (densely connected neural network). The Mean Absolute Error for ALS is 0.50775 and for the neural network is 0.29846. This is very accurate given that ratings given by users on Amazon ranges from 1 to 5 inclusively.
 * **Speedup**: Our application is able to achieve a speedup of **1.34**, when running with 16 threads on each node on a 8-node AWS c5.9xlarge-based cluster.
-* **Throughput**: Our application is able to handle data with a processing rate up to XXX GB/s.
+* **Throughput**: Our application is able to handle data with a processing rate varies from 0.00176 GB/s to 0.11538 GB/s.
 * **Scalability**: 
   * **Strong Scaling**: Our application is able to process a fixed data set while changing the number of cores as well as the number of threads per core. The highest achieved speedup is 1.34.
   * **Weak Scaling**: Our application is able to process a range of dataset with different sizes. That is, from small dataset (music data with 64,706 reviews) to the entire dataset (over 20 categories with 142.8 million reviews). The corresponding processing time is from 17 seconds to 216 seconds.
