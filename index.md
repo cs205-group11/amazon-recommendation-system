@@ -88,6 +88,8 @@ However, this model suffers from following **limitations**:
 * It is not computationally efficient
 * It does not handle sparsity well (i.e. It does not have accurate predictions if there are not enough reviews for a product)
 
+These limitations are the reason why we implement the ALS algorithm.
+
 ### Matrix Factorization (MF) optimized through Alternative Least Square (ALS)
 In light of above two limitations of SCF, matrix factorization is a more advanced technique that decomposes the original sparse matrix to lower-dimensional matrices incorporating latent vectors. These latent vectors may include higher-level attributes which are not captured by ratings for individual products. 
 
@@ -95,7 +97,7 @@ In light of above two limitations of SCF, matrix factorization is a more advance
 
 To factorize a matrix, single value decomposition is a common technique, where a matrix *R* can be decomposed of matrices *X, Σ, Y*, where *Σ* is a matrix containing singular values of the original matrix. However, given that R is a sparse matrix, we can find matrices *X* and *Y* directly, with the goal that the product of *X* and *Y* is an approximation of the original matrix *R* (as shown above). 
 
-Therefore, this problem is turned into an optimization problem to find *X* and *Y*. One way to numerically compute this is through Alternative Least Square (ALS) [4], where either the user factor matrix or item factor matrix is held constant in turn, and update the other matrix. Once we obtain X and Y, the predicted rating matrix can be simply found by the matrix multiplication of X and Y.
+Therefore, this problem is turned into an optimization problem to find *X* and *Y*. One way to numerically compute this is through Alternative Least Square (ALS) [4], where either the user factor matrix or item factor matrix is held constant in turn, and update the other matrix. Once we obtain X and Y, the predicted rating matrix can be simply found by the matrix multiplication of X and Y. This is the algorithm we implement in our project.
 
 ## Parallel Application and Programming Model
 
