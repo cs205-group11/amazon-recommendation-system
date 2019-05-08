@@ -89,7 +89,7 @@ However, this model suffers from following **limitations**:
 * It does not handle sparsity well (i.e. It does not have accurate predictions if there are not enough reviews for a product)
 
 ### Matrix Factorization (MF) optimized through Alternative Least Square (ALS)
-In light of above two limitations of SCF, matrix factorization is a more advanced technique that decomposes the original sparse matrix to lower-dimensional matrices incorporating latent vectors. These latent vectors may include higher-level attributes which are not captured by ratings for individual products. 
+In light of above two limitations of SCF, we will proceed with matrix factorization, which is a more advanced technique that decomposes the original sparse matrix to lower-dimensional matrices incorporating latent vectors. These latent vectors may include higher-level attributes which are not captured by ratings for individual products. 
 
 ![alt text](./fig/matrix_decomposition.png)
 
@@ -112,23 +112,6 @@ Below, we have shown this pipeline powered by Spark, a distributed cluster-compu
 The input of this data pipeline is the raw `JSON` file containing all the metadata for a given product. The output of this data pipeline is the utility matrix mentioned above. 
 
 ### Rating Prediction
-As introduced above, we will use different types of collaborative filtering systems for rating prediction. 
-
-For SCF, the cosine similarity is calculated as:
-
-![alt text](./fig/cos_similarity.png)
-
-And the prediction is given by:
-
-![alt text](./fig/prediction.png)
-
-Here,
-
-* P<sub>u,i</sub> is the predicted rating from user u to item i
-* R<sub>v,i</sub> is the rating given by a user v to a movie i
-* S<sub>u,v</sub> is the cosine similarity between the user u and v
-
-**Parallelism**: Since calculating the cosine similarity between every pair of user is independent, we can therefore use OpenMP to parallelize the algorithm. Further, we have distributed the workload across different nodes using Spark to increase model performance.
 
 For ALS, we are using the following algorithm [4] to iteratively find latent matrix X and Y:
 
