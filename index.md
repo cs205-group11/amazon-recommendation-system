@@ -322,7 +322,7 @@ If we pick some of the top rated asins, for example, B00LU9GTSC, B00LUCO52G, B00
 
 ## Performance Evaluation
 
-Baseline sequential code (`als_recommendation_sequential.py`) on 1 node 1 thread takes 288 seconds.
+Baseline sequential code (`als_recommendation_sequential.py`) on 1 node 1 thread takes 358 seconds.
 
 **Strong Scaling**
 
