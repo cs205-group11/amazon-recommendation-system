@@ -323,7 +323,13 @@ If we pick some of the top rated asins, for example, B00LU9GTSC, B00LUCO52G, B00
 
 ## Performance Evaluation
 
-Baseline sequential code (`als_recommendation_sequential.py`) on 1 node 1 thread takes 358 seconds.
+**Comparison with Local Machine**
+
+We ran our code with the Kindle dataset (~1GB) and the execution time on a local machine was 3154s. In comparison, the execution time on an 8-node cluster on AWS of instance type g5.9xlarge with 16 threads per node was 19s. This demonstrates a clear need for big data and big compute technologies. This problem is exacerbated by the fact that we did not even use the entire dataset locally! Severe memory limitations when running a (~100GB) dataset led us to this methodology. A plot is shown below to emphasize our results: 
+
+![alt text](./fig/full_speedup.png)
+
+Baseline sequential code (`als_recommendation_sequential.py`) on 1 node 1 thread on a g5.9xlarge instance takes 358 seconds.
 
 **Strong Scaling**
 
