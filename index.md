@@ -48,7 +48,7 @@ As shown above, each product contains a range of attributes. The most interestin
 
 ## Recommendation System Model
 
-In our project, we use two typical recommendation system models to perform benchmarking, based on the programming model mentioned in the next section. These two recommendation system models are:
+In our project, we use two typical collaborative filtering system models to perform benchmarking, powered by the programming model mentioned in the next section. These two collaborative filtering system models are:
 * Standard Collaborative Filtering Model (SCF)
 * Matrix Factorization (MF) optimized through Alternative Least Square (ALS)
 
