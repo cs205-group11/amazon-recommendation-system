@@ -174,7 +174,7 @@ For our recommendation system, everything from reading the data to processing th
 ## How to Use our Code
 
 ### Dependencies
-* [`Intel Distribution for Python` Version Version 2019 Update 3 for Python 3.7 on Linux](https://software.intel.com/en-us/distribution-for-python/choose-download/linux)
+* [`Intel Distribution for Python` Version 2019 Update 3 for Python 3.6 on Linux](https://software.intel.com/en-us/distribution-for-python/choose-download/linux)
 
 ### General Setup
 
