@@ -180,16 +180,16 @@ For our recommendation system, everything from reading the data to processing th
 
 To get started, follow [Guide: First Access to AWS](https://docs.google.com/document/d/1pbawfF3BNtT4iviQ5ZcMwNi9DNxjcZCqIQxcN1afV8I/edit) to create an AWS account and key pairs for remote log in.
 
-1 Log in AWS Management Console.
+**1**. Log in AWS Management Console.
 
-2 Follow [Guide: Spark Cluster on AWS](https://docs.google.com/document/d/1mBQAHfqlpu2WGeu48MGmNjo-m4r3IZha1HqFGXqcw_k/edit#) to create an EMR cluster. When asked to choose instance type, select c5.9xlarge with 9 nodes (1 master node + 8 worker nodes). Some of the specifications and libraries of the cluster that we used are as follows: 
+**2**. Follow [Guide: Spark Cluster on AWS](https://docs.google.com/document/d/1mBQAHfqlpu2WGeu48MGmNjo-m4r3IZha1HqFGXqcw_k/edit#) to create an EMR cluster. When asked to choose instance type, select c5.9xlarge with 9 nodes (1 master node + 8 worker nodes). Some of the specifications and libraries of the cluster that we used are as follows: 
 
 * c5.9xlarge: 36 vCPUs, 72 GiB memory, EBS-Only storage, 7,000 Mbps Dedicated EBS Bandwidth, 10 Gbps Network Performance
 * Core Hadoop: Hadoop 2.8.5 with Ganglia 3.7.2, Hive 2.3.4, Hue 4.3.0, Mahout 0.13.0, Pig 0.17.0, and Tez 0.9.1
 
 **Note**: It is possible that your limit for creating this type of instances is too low (e.g. 0). If this is the case, you need to contact the technical support and create a request to increase this limit. 
 
-3 The next step is to increase the volume of all nodes on the virtual machine to deal with the large dataset. The default partition size is not able to load the entire dataset. The following process must be followed for all 8 code nodes and 1 master node: 
+**3**. The next step is to increase the volume of all nodes on the virtual machine to deal with the large dataset. The default partition size is not able to load the entire dataset. The following process must be followed for all 8 code nodes and 1 master node: 
 
 * Navigate back to the EMR web interface, and click the 'Hardware' tab
 * Click the ID of the master/or worker node 
@@ -202,9 +202,9 @@ To get started, follow [Guide: First Access to AWS](https://docs.google.com/docu
 * In the terminal, run `sudo resize2fs /dev/nvme0n1p1`
 * Finally, to check the updated storage, we can use this command `df -h`. Your partition size should be 256 GB now. 
 
-4 `ssh` into the all nodes (including master and all worker nodes). Follow [this instruction](https://software.intel.com/en-us/distribution-for-python/choose-download/linux) to download and install Intel Distribution for Python for **all nodes**. This version of Python is built upon Intel Math Kernel Library(MKL) and it outperforms the original version of Python in numerical calculations since they are optimized on Intel processors. 
+**4**. `ssh` into the all nodes (including master and all worker nodes). Follow [this instruction](https://software.intel.com/en-us/distribution-for-python/choose-download/linux) to download and install Intel Distribution for Python for **all nodes**. This version of Python is built upon Intel Math Kernel Library(MKL) and it outperforms the original version of Python in numerical calculations since they are optimized on Intel processors. 
 
-5 Download the rating dataset. It may take a while (~40 mins) to complete this process depending on your network bandwidth.
+**5**. Download the rating dataset. It may take a while (~40 mins) to complete this process depending on your network bandwidth.
 
 ```
 wget http://snap.stanford.edu/data/amazon/productGraph/aggressive_dedup.json.gz
