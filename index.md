@@ -414,8 +414,8 @@ For this application, we have achieved following goals:
 * **Speedup**: Our application is able to achieve a speedup of **1.34**, when running with 16 threads on each node on a 8-node AWS c5.9xlarge-based cluster.
 * **Throughput**: Our application is able to handle data with a processing rate up to XXX GB/s.
 * **Scalability**: 
-  * Strong Scaling: Our application is able to process a fixed data set while changing the number of cores as well as the number of threads per core. The highest achieved speedup is 1.34.
-  * Weak Scaling: Our application is able to process a range of dataset with different sizes. That is, from small dataset (music data with 64,706 reviews) to the entire dataset (over 20 categories with 142.8 million reviews). The corresponding processing time is from 17 seconds to 216 seconds.
+  * **Strong Scaling**: Our application is able to process a fixed data set while changing the number of cores as well as the number of threads per core. The highest achieved speedup is 1.34.
+  * **Weak Scaling**: Our application is able to process a range of dataset with different sizes. That is, from small dataset (music data with 64,706 reviews) to the entire dataset (over 20 categories with 142.8 million reviews). The corresponding processing time is from 17 seconds to 216 seconds.
 
 ## Improvements Suggested
 
