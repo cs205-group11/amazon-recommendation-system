@@ -370,11 +370,11 @@ Third, to test for weak scalability, we run our code using different problem siz
 
 ## Optimizations and Overheads
 
-The single largest overhead of our algorithms is the dataloading process. For our largest dataset(17.7 gb), this could take over 160 seconds. To tackle this, we design our algorithm as a one pass process. We generate all our predictions and latent vectors all at once. This reduces the need to process the dataset to the minimum. In addition, in Spark operations, we limit the number of time we have to call SortByKey, ReduceByKey, or other similiar operations that will cause the scheduler to sort the entire dataset or reshuffle the data. 
+The single largest overhead of our algorithms is the dataloading process. For our largest dataset (unzipped, 17.7 gb), this could take over 160 seconds. To tackle this, we design our algorithm as a one pass process. We generate all our predictions and latent vectors all at once. This reduces the need to process the dataset to the minimum. In addition, in Spark operations, we limit the number of time we have to call `SortByKey`, `ReduceByKey`, or other similiar operations that will cause the scheduler to sort the entire dataset or reshuffle the data. 
 
 In addition, to optimize storage of large RDD, we need to cache the RDDs to avoid recomputation. There are different caching level of RDDs such as MEMORY, MEMORY + DISK, and DISK only. By caching the RDDs, we aviod having to recompute large RDDs all over again. 
 
-Finally, as an infrastructure level optimization, we used Intel's distribution of python along with the optimized NumPy package. This will give us, on average, 20 second speed up on the largest dataset (17.7g).
+Finally, as an infrastructure level optimization, we used Intel's distribution of Python along with the optimized NumPy package. This will give us, on average, 20 second speed up on the largest dataset (17.7g).
 * * *
 
 # Advanced Features
