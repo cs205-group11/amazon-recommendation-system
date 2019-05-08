@@ -336,7 +336,7 @@ First, we vary the number of nodes (executors) on our cluster. The number of thr
 | 4 | 222 |  1.00 | 1.61 | --num-executors 4 --executor-cores 8 --driver-memory 8g --executor-memory 8g |
 | 8 | 216 |  1.03 | 1.66 | --num-executors 8 --executor-cores 8 --driver-memory 8g --executor-memory 8g |
 
-A plot of execution times is given below: 
+A plot of speedups is given below. This is compared to the sequential code on this particular instance (which takes 358s): 
 
 ![alt text](./fig/nodes.png)
 
@@ -350,7 +350,7 @@ Second, we vary the number of threads per node (executor) on our cluster. The nu
 | 8  | 216 | 1.31 | 1.66 | --num-executors 8 --executor-cores 8 --driver-memory 8g  --executor-memory 8g  |
 | 16 | 210 | 1.34 | 1.70 | --num-executors 8 --executor-cores 16 --driver-memory 8g --executor-memory 4g  |
 
-A plot of execution times is given below: 
+A plot of speedups is given below. This is compared to the sequential code on this particular instance (which takes 358s): 
 
 ![alt text](./fig/cores_per_node.png)
 
