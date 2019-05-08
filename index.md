@@ -208,13 +208,11 @@ To get started, follow [Guide: First Access to AWS](https://docs.google.com/docu
 
 ```
 wget http://snap.stanford.edu/data/amazon/productGraph/aggressive_dedup.json.gz
-
 wget http://snap.stanford.edu/data/amazon/productGraph/reviews_Kindle_Store_5.json.gz
-
 wget http://snap.stanford.edu/data/amazon/productGraph/reviews_Books_5.json.gz
 ```
 
-**6**. Extract the rating data using `gzip`.
+**6**. Extract the rating data using `gzip` (the file name depends on the input dataset of interest. Here we are using `aggressive_dedup.json.gz` as an example).
 
 ```
 gzip -d aggressive_dedup.json.gz
