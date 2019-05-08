@@ -88,8 +88,6 @@ However, this model suffers from following **limitations**:
 * It is not computationally efficient
 * It does not handle sparsity well (i.e. It does not have accurate predictions if there are not enough reviews for a product)
 
-These limitations are the reason why we implement the ALS algorithm.
-
 ### Matrix Factorization (MF) optimized through Alternative Least Square (ALS)
 In light of above two limitations of SCF, matrix factorization is a more advanced technique that decomposes the original sparse matrix to lower-dimensional matrices incorporating latent vectors. These latent vectors may include higher-level attributes which are not captured by ratings for individual products. 
 
