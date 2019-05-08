@@ -162,7 +162,7 @@ spark-submit --driver-memory 20g --executor-memory 40g  als_recommendation_seque
 
 See the below section for how to prepare the dataset and the cluster.
 
-The time it takes for the sequential code is 288 seconds.
+The time it takes for the sequential code is 358 seconds.
 
 
 ## How to Use our Code
