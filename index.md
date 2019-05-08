@@ -163,10 +163,7 @@ In this project, we have used a number of platforms and infrastructures covered 
 
 ## Software Design
 
-Discuss Software design here
-
-You should mention software design, code baseline, dependencies
-
+### Softare Flowchart
 Our entire source code can be found in our [github repository](https://github.com/JinZhaoHong/cs205_amazon_recommendation).
 
 For our recommendation system, everything from reading the data to processing the data to generating the results uses Spark dataframe and Spark RDD. Package wise, we use Spark and Intel's distribution of Python + NumPy(with OpenMP support on the backend). The workflow of the software design is shown in the below graph.
@@ -175,6 +172,9 @@ For our recommendation system, everything from reading the data to processing th
 ![alt text](./fig/software_design.png)
 
 ## How to Use our Code
+
+### Dependencies
+* [`Intel Distribution for Python` Version Version 2019 Update 3 for Python 3.7 on Linux](https://software.intel.com/en-us/distribution-for-python/choose-download/linux)
 
 ### General Setup
 
