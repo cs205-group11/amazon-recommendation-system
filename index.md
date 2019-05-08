@@ -265,7 +265,6 @@ spark-submit --num-executors 4 --executor-cores 8 --driver-memory 8g --executor-
 
 ```
 spark-submit --num-executors 4 --executor-cores 8 --driver-memory 8g --executor-memory 8g  als_recommendation.py reviews_Kindle_Store_5.json 
-
 ```
 
 **13**. While this job is being executed, you will see a series of outputs in the terminal. When this job is completed, you should see some newly generated folder on the hdfs.
