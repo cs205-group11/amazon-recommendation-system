@@ -328,12 +328,12 @@ Baseline sequential code (`als_recommendation_sequential.py`) on 1 node 1 thread
 
 First, we vary the number of nodes (executors) on our cluster. The number of threads in each case was 8. We also utilized caching on memory and RDD. This table shows that an increase in number of cores does not decrease the execution time by too much. We anticipate that this is due to the data loading overhead (see "Optimizations and Overheads" section below). Since this overhead takes too long, the additional computation capacity brought by cores is not significant.
 
-|  Nodes  | Execution Time (s) | Speedup | Flags
-|:--:|:--:|:--:|:--:|
-| 1 | 222 |  1.00 | --num-executors 1 --executor-cores 8 --driver-memory 8g --executor-memory 8g | 
-| 2 | 222 |  1.00 | --num-executors 2 --executor-cores 8 --driver-memory 8g --executor-memory 8g |
-| 4 | 222 |  1.00 | --num-executors 4 --executor-cores 1 --driver-memory 8g --executor-memory 8g |
-| 8 | 216 |  1.03 | --num-executors 8 --executor-cores 1 --driver-memory 8g --executor-memory 8g |
+|  Nodes (Fixing Thread = 8) | Execution Time (s) | Speedup | Speedup compared to sequential(358 seconds) | Flags
+|:--:|:--:|:--:|:--:|:--:|
+| 1 | 222 |  1.00 | 1.61 | --num-executors 1 --executor-cores 8 --driver-memory 8g --executor-memory 8g | 
+| 2 | 222 |  1.00 | 1.61 | --num-executors 2 --executor-cores 8 --driver-memory 8g --executor-memory 8g |
+| 4 | 222 |  1.00 | 1.61 | --num-executors 4 --executor-cores 8 --driver-memory 8g --executor-memory 8g |
+| 8 | 216 |  1.03 | 1.66 | --num-executors 8 --executor-cores 8 --driver-memory 8g --executor-memory 8g |
 
 A plot of execution times is given below: 
 
@@ -341,13 +341,13 @@ A plot of execution times is given below:
 
 Second, we vary the number of threads per node (executor) on our cluster. The number of nodes in each case was 8. We also utilized caching on memory and RDD.
 
-|  Threads per Node  | Execution Time (s) | Speedup | Flags
-|:--:|:--:|:--:|:--:|
-| 1  | 282 | 1.00 | --num-executors 8 --executor-cores 1 --driver-memory 20g --executor-memory 50g | 
-| 2  | 222 | 1.27 | --num-executors 8 --executor-cores 2 --driver-memory 20g --executor-memory 25g |
-| 4  | 210 | 1.34 | --num-executors 8 --executor-cores 4 --driver-memory 10g --executor-memory 15g |
-| 8  | 216 | 1.31 | --num-executors 8 --executor-cores 8 --driver-memory 8g  --executor-memory 8g  |
-| 16 | 210 | 1.34 | --num-executors 8 --executor-cores 16 --driver-memory 8g --executor-memory 4g  |
+|  Threads per Node (Fixing Node = 8) | Execution Time (s) | Speedup | Speedup compared to sequential(358 seconds) | Flags
+|:--:|:--:|:--:|:--:|:--:|
+| 1  | 282 | 1.00 | 1.27 | --num-executors 8 --executor-cores 1 --driver-memory 20g --executor-memory 50g | 
+| 2  | 222 | 1.27 | 1.61 | --num-executors 8 --executor-cores 2 --driver-memory 20g --executor-memory 25g |
+| 4  | 210 | 1.34 | 1.70 | --num-executors 8 --executor-cores 4 --driver-memory 10g --executor-memory 15g |
+| 8  | 216 | 1.31 | 1.66 | --num-executors 8 --executor-cores 8 --driver-memory 8g  --executor-memory 8g  |
+| 16 | 210 | 1.34 | 1.70 | --num-executors 8 --executor-cores 16 --driver-memory 8g --executor-memory 4g  |
 
 A plot of execution times is given below: 
 
